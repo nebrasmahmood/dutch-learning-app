@@ -1,0 +1,147 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const STORAGE_KEYS = {
+  USER_DATA: "@nederlearn_user",
+  PROGRESS: "@nederlearn_progress",
+  AUTH: "@nederlearn_auth",
+};
+
+export interface UserData {
+  id: string;
+  email: string;
+  level: number;
+  totalXP: number;
+  badges: string[];
+  createdAt: string;
+}
+
+export interface SectionProgress {
+  sectionId: string;
+  completed: boolean;
+  score: number;
+  attempts: number;
+}
+
+export interface ProgressData {
+  completedSections: string[];
+  sectionProgress: Record<string, SectionProgress>;
+  examCompleted: boolean;
+  examScore: number;
+}
+
+export const storage = {
+  async getUser(): Promise<UserData | null> {
+    try {
+      const data = await AsyncStorage.getItem(STORAGE_KEYS.USER_DATA);
+      return data ? JSON.parse(data) : null;
+    } catch {
+      return null;
+    }
+  },
+
+  async setUser(user: UserData): Promise<void> {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEYS.USER_DATA, JSON.stringify(user));
+    } catch (error) {
+      console.error("Failed to save user:", error);
+    }
+  },
+
+  async getProgress(): Promise<ProgressData> {
+    try {
+      const data = await AsyncStorage.getItem(STORAGE_KEYS.PROGRESS);
+      if (data) return JSON.parse(data);
+    } catch {
+      // Return default
+    }
+    return {
+      completedSections: [],
+      sectionProgress: {},
+      examCompleted: false,
+      examScore: 0,
+    };
+  },
+
+  async setProgress(progress: ProgressData): Promise<void> {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEYS.PROGRESS, JSON.stringify(progress));
+    } catch (error) {
+      console.error("Failed to save progress:", error);
+    }
+  },
+
+  async isAuthenticated(): Promise<boolean> {
+    try {
+      const auth = await AsyncStorage.getItem(STORAGE_KEYS.AUTH);
+      return auth === "true";
+    } catch {
+      return false;
+    }
+  },
+
+  async setAuthenticated(value: boolean): Promise<void> {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEYS.AUTH, value ? "true" : "false");
+    } catch (error) {
+      console.error("Failed to save auth:", error);
+    }
+  },
+
+  async addXP(amount: number): Promise<UserData | null> {
+    const user = await this.getUser();
+    if (!user) return null;
+
+    user.totalXP += amount;
+    const newLevel = Math.floor(user.totalXP / 100) + 1;
+    user.level = newLevel;
+
+    await this.setUser(user);
+    return user;
+  },
+
+  async completeSection(sectionId: string, score: number): Promise<void> {
+    const progress = await this.getProgress();
+    if (!progress.completedSections.includes(sectionId)) {
+      progress.completedSections.push(sectionId);
+    }
+    progress.sectionProgress[sectionId] = {
+      sectionId,
+      completed: true,
+      score,
+      attempts: (progress.sectionProgress[sectionId]?.attempts || 0) + 1,
+    };
+    await this.setProgress(progress);
+  },
+
+  async clearAll(): Promise<void> {
+    try {
+      await AsyncStorage.multiRemove([
+        STORAGE_KEYS.USER_DATA,
+        STORAGE_KEYS.PROGRESS,
+        STORAGE_KEYS.AUTH,
+      ]);
+    } catch (error) {
+      console.error("Failed to clear storage:", error);
+    }
+  },
+
+  async initUser(email: string): Promise<UserData> {
+    const user: UserData = {
+      id: Date.now().toString(),
+      email,
+      level: 1,
+      totalXP: 0,
+      badges: [],
+      createdAt: new Date().toISOString(),
+    };
+    await this.setUser(user);
+    await this.setAuthenticated(true);
+    await this.setProgress({
+      completedSections: [],
+      sectionProgress: {},
+      examCompleted: false,
+      examScore: 0,
+    });
+    return user;
+  },
+};

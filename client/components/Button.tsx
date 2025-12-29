@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { StyleSheet, Pressable, ViewStyle, StyleProp } from "react-native";
+import { StyleSheet, Pressable, ViewStyle, StyleProp, TextStyle } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -8,13 +8,13 @@ import Animated, {
 } from "react-native-reanimated";
 
 import { ThemedText } from "@/components/ThemedText";
-import { useTheme } from "@/hooks/useTheme";
-import { BorderRadius, Spacing } from "@/constants/theme";
+import { AppColors, BorderRadius, Spacing } from "@/constants/theme";
 
 interface ButtonProps {
   onPress?: () => void;
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
   disabled?: boolean;
 }
 
@@ -32,9 +32,9 @@ export function Button({
   onPress,
   children,
   style,
+  textStyle,
   disabled = false,
 }: ButtonProps) {
-  const { theme } = useTheme();
   const scale = useSharedValue(1);
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -53,6 +53,13 @@ export function Button({
     }
   };
 
+  const flatStyle = StyleSheet.flatten(style);
+  const hasCustomBackground = flatStyle?.backgroundColor && flatStyle.backgroundColor !== AppColors.primary;
+  const hasBorder = flatStyle?.borderWidth && flatStyle.borderWidth > 0;
+  const textColor = hasBorder && flatStyle.backgroundColor === "transparent" 
+    ? AppColors.primary 
+    : AppColors.white;
+
   return (
     <AnimatedPressable
       onPress={disabled ? undefined : onPress}
@@ -62,7 +69,7 @@ export function Button({
       style={[
         styles.button,
         {
-          backgroundColor: theme.link,
+          backgroundColor: AppColors.primary,
           opacity: disabled ? 0.5 : 1,
         },
         style,
@@ -71,7 +78,7 @@ export function Button({
     >
       <ThemedText
         type="body"
-        style={[styles.buttonText, { color: theme.buttonText }]}
+        style={[styles.buttonText, { color: textColor }, textStyle]}
       >
         {children}
       </ThemedText>
