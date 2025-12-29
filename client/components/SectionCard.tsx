@@ -21,6 +21,8 @@ interface SectionCardProps {
   questionsCompleted?: number;
   totalQuestions?: number;
   onPress?: () => void;
+  statusText?: string;
+  isRTL?: boolean;
 }
 
 const springConfig: WithSpringConfig = {
@@ -39,7 +41,9 @@ export function SectionCard({
   progress = 0,
   questionsCompleted = 0,
   totalQuestions = 50,
-  onPress 
+  onPress,
+  statusText: providedStatusText,
+  isRTL = false,
 }: SectionCardProps) {
   const scale = useSharedValue(1);
 
@@ -74,9 +78,7 @@ export function SectionCard({
   };
 
   const getStatusText = () => {
-    if (state === "locked") return "Locked";
-    if (state === "completed") return "Completed";
-    return "Start Learning";
+    return providedStatusText || "";
   };
 
   return (
@@ -104,10 +106,10 @@ export function SectionCard({
         </View>
 
         <View style={styles.bottomSection}>
-          <ThemedText type="h4" style={styles.name} numberOfLines={1}>
+          <ThemedText type="h4" style={[styles.name, isRTL && styles.rtlText]} numberOfLines={1}>
             {name}
           </ThemedText>
-          <ThemedText type="small" style={styles.statusText}>
+          <ThemedText type="small" style={[styles.statusText, isRTL && styles.rtlText]}>
             {getStatusText()}
           </ThemedText>
           
@@ -122,7 +124,7 @@ export function SectionCard({
                 />
               </View>
               <ThemedText type="small" style={styles.progressText}>
-                {state === "completed" ? "50/50" : `${questionsCompleted}/50`}
+                {state === "completed" ? `${totalQuestions}/${totalQuestions}` : `${questionsCompleted}/${totalQuestions}`}
               </ThemedText>
             </View>
           ) : null}
@@ -203,5 +205,9 @@ const styles = StyleSheet.create({
     color: "rgba(255,255,255,0.9)",
     fontSize: 11,
     fontWeight: "600",
+  },
+  rtlText: {
+    textAlign: "right",
+    writingDirection: "rtl",
   },
 });

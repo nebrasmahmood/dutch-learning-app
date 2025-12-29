@@ -1,0 +1,60 @@
+CRITICAL UX + LOCALIZATION + ONBOARDING FIXES REQUIRED
+
+LANGUAGE SELECTION BEFORE APP ENTRY (MANDATORY)
+-----------------------------------------------
+1) The user MUST choose the app language BEFORE entering the main app.
+2) Add a Language Selection screen as the FIRST screen on app launch.
+3) Supported languages:
+   - English
+   - Arabic
+4) The user cannot proceed into the app without selecting a language.
+5) Save the selected language in persistent storage (local storage / async storage).
+6) On next app launch, auto-load the previously selected language.
+
+START SCREEN BUTTON FIX
+-----------------------
+7) The white button on the start screen MUST have clear text.
+8) Button text must be localized:
+   - English: "Start Learning"
+   - Arabic:  "ابدأ التعلّم"
+9) Do NOT display any unlabeled buttons.
+
+FULL HOME SCREEN LOCALIZATION
+-----------------------------
+10) When Arabic is selected, the ENTIRE home screen must be translated, including:
+    - App subtitle ("Learn Dutch step by step")
+    - Level
+    - Total XP
+    - Progress
+    - Progress to next level
+    - Vocabulary Sections
+    - Section names
+    - "Start Learning"
+    - "Locked"
+    - Progress counters (e.g. 0/50)
+
+QUIZ LANGUAGE LOGIC (STRICT)
+---------------------------
+11) Quiz behavior must depend on selected language:
+    - English mode:
+      • Show `word_en`
+      • Question text: "What is this in Dutch?"
+    - Arabic mode:
+      • Show `word_ar`
+      • Question text: "ما معنى هذه الكلمة باللغة الهولندية؟"
+
+12) Answer options MUST ALWAYS remain in Dutch (`word_nl`).
+13) The correct answer is always the matching `word_nl`.
+
+LOCALIZATION RULES (NON-NEGOTIABLE)
+----------------------------------
+- Do NOT hardcode English text.
+- Use localization files (e.g. en.json / ar.json).
+- Arabic layout MUST support RTL.
+- Language switching must re-render the entire UI immediately.
+
+GOAL
+----
+The app must feel fully native in Arabic or English,
+starting from the first screen,
+with clear language choice and correct learning logic.

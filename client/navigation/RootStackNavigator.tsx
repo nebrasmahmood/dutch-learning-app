@@ -1,7 +1,9 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useScreenOptions } from "@/hooks/useScreenOptions";
+import { useLanguage } from "@/lib/LanguageContext";
 
+import LanguageSelectionScreen from "@/screens/LanguageSelectionScreen";
 import SplashScreen from "@/screens/SplashScreen";
 import AuthScreen from "@/screens/AuthScreen";
 import HomeScreen from "@/screens/HomeScreen";
@@ -12,6 +14,7 @@ import ResultScreen from "@/screens/ResultScreen";
 import ProfileScreen from "@/screens/ProfileScreen";
 
 export type RootStackParamList = {
+  LanguageSelection: undefined;
   Splash: undefined;
   Auth: undefined;
   Home: undefined;
@@ -27,9 +30,15 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function RootStackNavigator() {
   const screenOptions = useScreenOptions();
   const opaqueScreenOptions = useScreenOptions({ transparent: false });
+  const { t } = useLanguage();
 
   return (
-    <Stack.Navigator screenOptions={screenOptions} initialRouteName="Splash">
+    <Stack.Navigator screenOptions={screenOptions} initialRouteName="LanguageSelection">
+      <Stack.Screen
+        name="LanguageSelection"
+        component={LanguageSelectionScreen}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Splash"
         component={SplashScreen}
@@ -50,8 +59,8 @@ export default function RootStackNavigator() {
         component={QuizScreen}
         options={{
           ...opaqueScreenOptions,
-          headerTitle: "Quiz",
-          headerBackTitle: "Back",
+          headerTitle: t("nav.quiz"),
+          headerBackTitle: t("common.back"),
         }}
       />
       <Stack.Screen
@@ -64,8 +73,8 @@ export default function RootStackNavigator() {
         component={FinalExamScreen}
         options={{
           ...opaqueScreenOptions,
-          headerTitle: "Final Exam",
-          headerBackTitle: "Back",
+          headerTitle: t("nav.finalExam"),
+          headerBackTitle: t("common.back"),
         }}
       />
       <Stack.Screen
@@ -78,8 +87,8 @@ export default function RootStackNavigator() {
         component={ProfileScreen}
         options={{
           ...opaqueScreenOptions,
-          headerTitle: "Profile",
-          headerBackTitle: "Back",
+          headerTitle: t("nav.profile"),
+          headerBackTitle: t("common.back"),
         }}
       />
     </Stack.Navigator>

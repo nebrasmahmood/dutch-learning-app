@@ -15,6 +15,7 @@ import { Button } from "@/components/Button";
 import { ThemedText } from "@/components/ThemedText";
 import { AppColors, Spacing, BorderRadius } from "@/constants/theme";
 import { storage } from "@/lib/storage";
+import { useLanguage } from "@/lib/LanguageContext";
 import type { RootStackParamList } from "@/navigation/RootStackNavigator";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -22,6 +23,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 export default function SplashScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
+  const { t, isRTL } = useLanguage();
   
   const logoScale = useSharedValue(0);
   const titleOpacity = useSharedValue(0);
@@ -87,8 +89,8 @@ export default function SplashScreen() {
           </Animated.View>
 
           <Animated.View style={subtitleStyle}>
-            <ThemedText type="body" style={styles.subtitle}>
-              Learn Dutch step by step
+            <ThemedText type="body" style={[styles.subtitle, isRTL && styles.rtlText]}>
+              {t("app.subtitle")}
             </ThemedText>
           </Animated.View>
         </View>
@@ -104,8 +106,9 @@ export default function SplashScreen() {
         <Button
           onPress={handleGetStarted}
           style={styles.button}
+          textStyle={styles.buttonText}
         >
-          Get Started
+          {t("app.startLearning")}
         </Button>
       </Animated.View>
     </LinearGradient>
@@ -158,5 +161,13 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: AppColors.white,
     borderRadius: BorderRadius.md,
+  },
+  buttonText: {
+    color: AppColors.primary,
+    fontWeight: "700",
+  },
+  rtlText: {
+    textAlign: "right",
+    writingDirection: "rtl",
   },
 });

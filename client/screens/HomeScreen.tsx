@@ -20,6 +20,7 @@ import { SectionCard } from "@/components/SectionCard";
 import { AppColors, Spacing, BorderRadius } from "@/constants/theme";
 import { storage, UserData, ProgressData } from "@/lib/storage";
 import { SECTIONS } from "@/lib/mockData";
+import { useLanguage } from "@/lib/LanguageContext";
 import type { RootStackParamList } from "@/navigation/RootStackNavigator";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -28,6 +29,7 @@ type SectionState = "locked" | "active" | "completed";
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
+  const { t, isRTL } = useLanguage();
   const [user, setUser] = useState<UserData | null>(null);
   const [progress, setProgress] = useState<ProgressData | null>(null);
   
@@ -160,13 +162,13 @@ export default function HomeScreen() {
             </Pressable>
           </View>
 
-          <View style={styles.statsRow}>
+          <View style={[styles.statsRow, isRTL && styles.rtlRow]}>
             <View style={styles.statCard}>
               <View style={styles.statIconContainer}>
                 <Feather name="award" size={18} color={AppColors.accent} />
               </View>
               <View>
-                <ThemedText type="small" style={styles.statLabel}>Level</ThemedText>
+                <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>{t("home.level")}</ThemedText>
                 <ThemedText type="h4" style={styles.statValue}>{user?.level || 1}</ThemedText>
               </View>
             </View>
@@ -176,7 +178,7 @@ export default function HomeScreen() {
                 <Feather name="zap" size={18} color={AppColors.accent} />
               </Animated.View>
               <View>
-                <ThemedText type="small" style={styles.statLabel}>Total XP</ThemedText>
+                <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>{t("home.totalXP")}</ThemedText>
                 <ThemedText type="h4" style={styles.statValue}>{user?.totalXP || 0}</ThemedText>
               </View>
             </View>
@@ -186,19 +188,19 @@ export default function HomeScreen() {
                 <Feather name="check-circle" size={18} color={AppColors.success} />
               </View>
               <View>
-                <ThemedText type="small" style={styles.statLabel}>Progress</ThemedText>
+                <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>{t("home.progress")}</ThemedText>
                 <ThemedText type="h4" style={styles.statValue}>{progressPercent}%</ThemedText>
               </View>
             </View>
           </View>
 
           <View style={styles.xpProgressContainer}>
-            <View style={styles.xpProgressHeader}>
-              <ThemedText type="small" style={styles.xpProgressLabel}>
-                Progress to Level {(user?.level || 1) + 1}
+            <View style={[styles.xpProgressHeader, isRTL && styles.rtlRow]}>
+              <ThemedText type="small" style={[styles.xpProgressLabel, isRTL && styles.rtlText]}>
+                {t("home.progressToLevel", { level: (user?.level || 1) + 1 })}
               </ThemedText>
-              <ThemedText type="small" style={styles.xpProgressValue}>
-                {xpToNextLevel} XP needed
+              <ThemedText type="small" style={[styles.xpProgressValue, isRTL && styles.rtlText]}>
+                {t("home.xpNeeded", { xp: xpToNextLevel })}
               </ThemedText>
             </View>
             <ProgressBar
@@ -214,34 +216,60 @@ export default function HomeScreen() {
       <View style={styles.mainContent}>
         <View style={styles.sectionHeader}>
           <View>
-            <ThemedText type="h3" style={styles.sectionTitle}>
-              Vocabulary Sections
+            <ThemedText type="h3" style={[styles.sectionTitle, isRTL && styles.rtlText]}>
+              {t("home.vocabularySections")}
             </ThemedText>
-            <ThemedText type="small" style={styles.sectionSubtitle}>
-              {completedCount} of {SECTIONS.length} sections completed
+            <ThemedText type="small" style={[styles.sectionSubtitle, isRTL && styles.rtlText]}>
+              {t("home.sectionsCompleted", { completed: completedCount, total: SECTIONS.length })}
             </ThemedText>
           </View>
         </View>
 
         <View style={styles.grid}>
-          {SECTIONS.map((section, index) => (
-            <View key={section.id} style={styles.gridItem}>
-              <SectionCard
-                name={section.name}
-                icon={section.icon}
-                state={getSectionState(section.id, index)}
-                onPress={() => handleSectionPress(section.id)}
-              />
-            </View>
-          ))}
+          {SECTIONS.map((section, index) => {
+            const sectionState = getSectionState(section.id, index);
+            const getSectionName = () => {
+              const nameMap: Record<string, string> = {
+                fruits: t("section.fruits"),
+                vegetables: t("section.vegetables"),
+                animals: t("section.animals"),
+                numbers: t("section.numbers"),
+                colors: t("section.colors"),
+                "food-drinks": t("section.food"),
+                places: t("section.places"),
+                "daily-actions": t("section.actions"),
+                family: t("section.family"),
+                jobs: t("section.jobs"),
+                transportation: t("section.transport"),
+              };
+              return nameMap[section.id] || section.name;
+            };
+            const getLocalizedStatus = () => {
+              if (sectionState === "locked") return t("home.locked");
+              if (sectionState === "completed") return t("section.completed");
+              return t("app.startLearning");
+            };
+            return (
+              <View key={section.id} style={styles.gridItem}>
+                <SectionCard
+                  name={getSectionName()}
+                  icon={section.icon}
+                  state={sectionState}
+                  onPress={() => handleSectionPress(section.id)}
+                  statusText={getLocalizedStatus()}
+                  isRTL={isRTL}
+                />
+              </View>
+            );
+          })}
         </View>
 
         <View style={styles.examSection}>
-          <ThemedText type="h3" style={styles.sectionTitle}>
-            Final Exam
+          <ThemedText type="h3" style={[styles.sectionTitle, isRTL && styles.rtlText]}>
+            {t("home.finalExam")}
           </ThemedText>
-          <ThemedText type="small" style={styles.sectionSubtitle}>
-            Test your knowledge across all sections
+          <ThemedText type="small" style={[styles.sectionSubtitle, isRTL && styles.rtlText]}>
+            {t("home.testKnowledge")}
           </ThemedText>
           
           <Pressable
@@ -255,7 +283,7 @@ export default function HomeScreen() {
               colors={canTakeExam ? [AppColors.accent, "#F57C00"] : [AppColors.locked, "#9E9E9E"]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
-              style={styles.examCard}
+              style={[styles.examCard, isRTL && styles.rtlRow]}
             >
               <View style={styles.examIconContainer}>
                 <Feather
@@ -265,18 +293,18 @@ export default function HomeScreen() {
                 />
               </View>
               <View style={styles.examText}>
-                <ThemedText type="h4" style={styles.examTitle}>
-                  {canTakeExam ? "Ready for the Exam!" : "Complete All Sections First"}
+                <ThemedText type="h4" style={[styles.examTitle, isRTL && styles.rtlText]}>
+                  {canTakeExam ? t("home.readyForExam") : t("home.completeFirst")}
                 </ThemedText>
-                <ThemedText type="small" style={styles.examSubtitle}>
+                <ThemedText type="small" style={[styles.examSubtitle, isRTL && styles.rtlText]}>
                   {canTakeExam
-                    ? "20 questions from all topics"
-                    : `Complete ${SECTIONS.length - completedCount} more sections`}
+                    ? t("home.questionsFromTopics")
+                    : t("home.completeMore", { count: SECTIONS.length - completedCount })}
                 </ThemedText>
               </View>
               {canTakeExam ? (
                 <View style={styles.examArrow}>
-                  <Feather name="arrow-right" size={24} color={AppColors.white} />
+                  <Feather name={isRTL ? "arrow-left" : "arrow-right"} size={24} color={AppColors.white} />
                 </View>
               ) : null}
             </LinearGradient>
@@ -488,5 +516,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.2)",
     justifyContent: "center",
     alignItems: "center",
+  },
+  rtlRow: {
+    flexDirection: "row-reverse",
+  },
+  rtlText: {
+    textAlign: "right",
+    writingDirection: "rtl",
   },
 });
