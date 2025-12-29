@@ -1,0 +1,149 @@
+You are a senior mobile engineer and UI/UX implementer.
+
+Build a full production-ready cross-platform mobile application using:
+- React Native
+- Expo
+- TypeScript
+
+App Name:
+NederLearn
+
+App Goal:
+A modern educational mobile app to help new residents in the Netherlands learn basic Dutch vocabulary step-by-step using images, quizzes, and a final exam.
+
+Target Platforms:
+- iOS
+- Android
+
+====================
+DESIGN & UI RULES
+====================
+
+Follow a clean, friendly, educational UI exactly as described below.
+
+Color Palette:
+- Primary Blue: #1E88E5
+- Success Green: #43A047
+- Error Red: #E53935
+- Accent Orange: #FB8C00
+- Background: #F5F7FA
+- Text Dark: #263238
+- White Cards: #FFFFFF
+
+UI Style:
+- Rounded corners (16px radius)
+- Soft shadows on cards
+- Large buttons (52px height)
+- Friendly minimal design
+- Mobile-first layout
+- No clutter
+
+Typography:
+- Use a modern sans-serif font
+- Clear hierarchy: headings, body, buttons
+
+====================
+SCREENS TO BUILD
+====================
+
+1. Splash Screen
+- Gradient blue background
+- App name: “NederLearn”
+- Subtitle: “Learn Dutch step by step”
+- Button: “Get Started”
+
+2. Authentication Screen
+- Email + Password
+- Button: “Continue”
+- Simple validation
+
+3. Home Screen (Sections)
+- Grid layout (2 columns)
+- Section cards:
+  - Fruits
+  - Vegetables
+  - Animals
+  - Numbers
+- Cards have 3 states:
+  - Locked (gray + lock icon)
+  - Active (blue)
+  - Completed (green + star)
+- Top bar shows:
+  - User level
+  - XP progress bar
+
+4. Quiz Screen (Multiple Choice)
+- Large image at the top
+- Question text
+- 3 full-width answer buttons
+- Interaction:
+  - Correct answer → green button + checkmark + +XP
+  - Wrong answer → red button + shake animation
+- Auto move to next question
+
+5. Correct Answer Feedback
+- Green animated check
+- Text: “Correct! +10 XP”
+- Auto dismiss after 1 second
+
+6. Section Complete Screen
+- Trophy icon
+- Summary:
+  - Correct answers
+  - XP gained
+- Button: “Next Section”
+
+7. Final Exam Screen
+- Image-based questions
+- NO multiple choice
+- Text input for user answer
+- Button: “Submit Answer”
+- Tolerate minor spelling mistakes
+
+8. Result Screen
+- Final score percentage
+- Feedback:
+  - Excellent
+  - Good
+  - Needs Practice
+- Buttons:
+  - Review
+  - Back to Home
+
+9. Profile Screen
+- Avatar
+- Level
+- Total XP
+- Earned badges
+
+====================
+LOGIC & FUNCTIONALITY
+====================
+
+- XP is awarded only on correct answers
+- Sections unlock sequentially
+- Final exam unlocks after completing 10 sections
+- Progress is saved per user
+- Prevent XP manipulation on client side
+- Use mock data initially (images + words)
+
+====================
+TECHNICAL REQUIREMENTS
+====================
+
+- Use Expo Router or React Navigation
+- Use functional components
+- Use clean folder structure
+- Use mock backend logic (ready to connect Firebase later)
+- App must run immediately after build
+- Code must be readable, modular, and scalable
+
+====================
+OUTPUT EXPECTATION
+====================
+
+Deliver:
+- A fully working Expo React Native app
+- Runs on iOS & Android
+- Clean UI matching the design system
+- Ready for App Store & Google Play later
