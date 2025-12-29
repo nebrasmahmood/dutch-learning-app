@@ -53,15 +53,17 @@ const SECTION_ICONS: Record<string, string> = {
   daily_actions: "activity",
 };
 
-function generateImageUrlFromPrompt(imagePrompt: string): string {
-  const cleanPrompt = imagePrompt
+function generateImageUrlFromPrompt(imagePrompt: string, englishWord: string): string {
+  const keyword = englishWord
     .toLowerCase()
-    .replace(/on white background/g, "")
-    .replace(/on background/g, "")
+    .replace(/[^a-z0-9]/g, "")
     .trim();
   
-  const searchQuery = encodeURIComponent(cleanPrompt);
-  return `https://source.unsplash.com/400x400/?${searchQuery}`;
+  if (!keyword) {
+    return "";
+  }
+  
+  return `https://loremflickr.com/400/400/${encodeURIComponent(keyword)}?lock=${keyword.charCodeAt(0)}`;
 }
 
 function convertWhitelistItem(item: WhitelistItem): VocabItem {
@@ -69,7 +71,7 @@ function convertWhitelistItem(item: WhitelistItem): VocabItem {
     id: item.id,
     dutch: item.word_nl,
     english: item.word_en,
-    imageUrl: generateImageUrlFromPrompt(item.image_prompt),
+    imageUrl: generateImageUrlFromPrompt(item.image_prompt, item.word_en),
     imagePrompt: item.image_prompt,
   };
 }
