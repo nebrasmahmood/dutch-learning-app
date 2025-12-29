@@ -66,10 +66,11 @@ export default function QuizScreen() {
 
     setTimeout(() => {
       if (currentIndex < questions.length - 1) {
+        const nextQuestion = questions[currentIndex + 1];
         setCurrentIndex((prev) => prev + 1);
         setSelectedAnswer(null);
         setIsCorrect(null);
-        setImageLoading(true);
+        setImageLoading(nextQuestion?.imageUrl ? true : false);
       } else {
         const xpGained = (correctCount + (correct ? 1 : 0)) * XP_PER_CORRECT;
         storage.completeSection(sectionId, (correctCount + (correct ? 1 : 0)) / questions.length);
@@ -121,23 +122,31 @@ export default function QuizScreen() {
       </View>
 
       <View style={styles.imageContainer}>
-        {imageLoading ? (
+        {imageLoading && currentQuestion.imageUrl ? (
           <View style={styles.imagePlaceholder}>
             <ActivityIndicator size="large" color={AppColors.primary} />
           </View>
         ) : null}
-        <Image
-          source={{ uri: currentQuestion.imageUrl }}
-          style={[styles.image, imageLoading && styles.imageHidden]}
-          resizeMode="cover"
-          onLoad={() => setImageLoading(false)}
-          onError={() => setImageLoading(false)}
-        />
+        {!currentQuestion.imageUrl ? (
+          <View style={styles.imagePlaceholder}>
+            <ThemedText type="small" style={styles.placeholderText}>
+              Image loading...
+            </ThemedText>
+          </View>
+        ) : (
+          <Image
+            source={{ uri: currentQuestion.imageUrl }}
+            style={[styles.image, imageLoading && styles.imageHidden]}
+            resizeMode="cover"
+            onLoad={() => setImageLoading(false)}
+            onError={() => setImageLoading(false)}
+          />
+        )}
       </View>
 
       <View style={styles.questionContainer}>
         <ThemedText type="h3" style={styles.question}>
-          {currentQuestion.question}
+          What is this in Dutch?
         </ThemedText>
       </View>
 
@@ -201,6 +210,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: AppColors.grayLight,
+  },
+  placeholderText: {
+    color: AppColors.gray,
   },
   image: {
     width: "100%",
