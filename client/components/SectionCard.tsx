@@ -106,7 +106,7 @@ export function SectionCard({
         </View>
 
         <View style={styles.bottomSection}>
-          <ThemedText type="h4" style={[styles.name, isRTL && styles.rtlText]} numberOfLines={1}>
+          <ThemedText type="h4" style={[styles.name, isRTL && styles.rtlText]} numberOfLines={2} adjustsFontSizeToFit minimumFontScale={0.8}>
             {name}
           </ThemedText>
           <ThemedText type="small" style={[styles.statusText, isRTL && styles.rtlText]}>

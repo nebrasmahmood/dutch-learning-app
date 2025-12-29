@@ -165,32 +165,26 @@ export default function HomeScreen() {
           <View style={[styles.statsRow, isRTL && styles.rtlRow]}>
             <View style={styles.statCard}>
               <View style={styles.statIconContainer}>
-                <Feather name="award" size={18} color={AppColors.accent} />
+                <Feather name="award" size={16} color={AppColors.accent} />
               </View>
-              <View>
-                <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>{t("home.level")}</ThemedText>
-                <ThemedText type="h4" style={styles.statValue}>{user?.level || 1}</ThemedText>
-              </View>
+              <ThemedText type="small" style={styles.statLabel} numberOfLines={2}>{t("home.level")}</ThemedText>
+              <ThemedText type="h4" style={styles.statValue}>{user?.level || 1}</ThemedText>
             </View>
             
             <View style={styles.statCard}>
               <Animated.View style={[styles.statIconContainer, xpStyle]}>
-                <Feather name="zap" size={18} color={AppColors.accent} />
+                <Feather name="zap" size={16} color={AppColors.accent} />
               </Animated.View>
-              <View>
-                <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>{t("home.totalXP")}</ThemedText>
-                <ThemedText type="h4" style={styles.statValue}>{user?.totalXP || 0}</ThemedText>
-              </View>
+              <ThemedText type="small" style={styles.statLabel} numberOfLines={2}>{t("home.totalXP")}</ThemedText>
+              <ThemedText type="h4" style={styles.statValue}>{user?.totalXP || 0}</ThemedText>
             </View>
             
             <View style={styles.statCard}>
               <View style={styles.statIconContainer}>
-                <Feather name="check-circle" size={18} color={AppColors.success} />
+                <Feather name="check-circle" size={16} color={AppColors.success} />
               </View>
-              <View>
-                <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>{t("home.progress")}</ThemedText>
-                <ThemedText type="h4" style={styles.statValue}>{progressPercent}%</ThemedText>
-              </View>
+              <ThemedText type="small" style={styles.statLabel} numberOfLines={2}>{t("home.progress")}</ThemedText>
+              <ThemedText type="h4" style={styles.statValue}>{progressPercent}%</ThemedText>
             </View>
           </View>
 
@@ -401,16 +395,17 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     backgroundColor: "rgba(255,255,255,0.15)",
     borderRadius: BorderRadius.md,
-    padding: Spacing.md,
-    gap: Spacing.sm,
+    padding: Spacing.sm,
+    gap: Spacing.xs,
+    minWidth: 0,
   },
   statIconContainer: {
-    width: 36,
-    height: 36,
+    width: 32,
+    height: 32,
     borderRadius: BorderRadius.sm,
     backgroundColor: "rgba(255,255,255,0.2)",
     justifyContent: "center",
@@ -418,7 +413,8 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     color: "rgba(255,255,255,0.7)",
-    fontSize: 11,
+    fontSize: 10,
+    textAlign: "center",
   },
   statValue: {
     color: AppColors.white,
