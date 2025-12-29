@@ -36,6 +36,7 @@ export interface QuizQuestion {
   correctAnswer: string;
   options: string[];
   dutch: string;
+  english: string;
 }
 
 const SECTION_ICONS: Record<string, string> = {
@@ -132,6 +133,7 @@ export function generateQuizQuestions(section: Section, count: number = QUESTION
       correctAnswer: item.dutch,
       options,
       dutch: item.dutch,
+      english: item.english,
     };
   });
 }

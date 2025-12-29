@@ -145,8 +145,11 @@ export default function QuizScreen() {
       </View>
 
       <View style={styles.questionContainer}>
-        <ThemedText type="h3" style={styles.question}>
-          What is this in Dutch?
+        <ThemedText type="small" style={styles.questionLabel}>
+          What is the Dutch word for:
+        </ThemedText>
+        <ThemedText type="h2" style={styles.questionWord}>
+          {currentQuestion.english}
         </ThemedText>
       </View>
 
@@ -223,10 +226,16 @@ const styles = StyleSheet.create({
   },
   questionContainer: {
     marginBottom: Spacing.xl,
+    alignItems: "center",
   },
-  question: {
+  questionLabel: {
+    color: AppColors.gray,
+    marginBottom: Spacing.xs,
+  },
+  questionWord: {
     color: AppColors.textDark,
     textAlign: "center",
+    fontWeight: "700",
   },
   answersContainer: {
     flex: 1,
