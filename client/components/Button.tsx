@@ -54,9 +54,9 @@ export function Button({
   };
 
   const flatStyle = StyleSheet.flatten(style);
-  const hasCustomBackground = flatStyle?.backgroundColor && flatStyle.backgroundColor !== AppColors.primary;
+  const isWhiteBackground = flatStyle?.backgroundColor === AppColors.white || flatStyle?.backgroundColor === "#FFFFFF" || flatStyle?.backgroundColor === "#fff" || flatStyle?.backgroundColor === "white";
   const hasBorder = flatStyle?.borderWidth && flatStyle.borderWidth > 0;
-  const textColor = hasBorder && flatStyle.backgroundColor === "transparent" 
+  const textColor = (hasBorder && flatStyle.backgroundColor === "transparent") || isWhiteBackground
     ? AppColors.primary 
     : AppColors.white;
 
