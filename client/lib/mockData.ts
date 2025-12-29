@@ -1,3 +1,5 @@
+import { buildOptimizedImageUrl, validateImageForLearning } from "./imageUtils";
+
 export interface VocabItem {
   id: string;
   dutch: string;
@@ -14,6 +16,24 @@ export interface Section {
 
 const generateImageUrl = (query: string) =>
   `https://images.unsplash.com/photo-${query}?w=400&h=400&fit=crop`;
+
+export function getOptimizedImageUrl(
+  englishWord: string,
+  category: string
+): string {
+  return buildOptimizedImageUrl(englishWord, category, {
+    width: 400,
+    height: 400,
+    quality: 80,
+  });
+}
+
+export function validateVocabImage(
+  imageUrl: string,
+  englishWord: string
+): { isValid: boolean; issues: string[] } {
+  return validateImageForLearning(imageUrl, englishWord);
+}
 
 const fruitItems: VocabItem[] = [
   { id: "f1", dutch: "Appel", english: "Apple", imageUrl: generateImageUrl("1568702846914-96b305d2uj64") },
@@ -616,7 +636,9 @@ export function getSectionById(id: string): Section | undefined {
   return SECTIONS.find((s) => s.id === id);
 }
 
-export function generateQuizQuestions(section: Section, count: number = 10): QuizQuestion[] {
+const QUESTIONS_PER_SESSION = 30;
+
+export function generateQuizQuestions(section: Section, count: number = QUESTIONS_PER_SESSION): QuizQuestion[] {
   const shuffledItems = [...section.items].sort(() => Math.random() - 0.5);
   const selectedItems = shuffledItems.slice(0, Math.min(count, section.items.length));
   
