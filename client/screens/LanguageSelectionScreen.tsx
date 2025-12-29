@@ -24,29 +24,16 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 export default function LanguageSelectionScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
-  const { setLanguage, hasLanguageBeenSet, isLoading } = useLanguage();
+  const { setLanguage, language } = useLanguage();
   const [selectedLanguage, setSelectedLanguage] = useState<AppLanguage | null>(null);
 
   const logoScale = useSharedValue(0);
   const contentOpacity = useSharedValue(0);
 
   React.useEffect(() => {
-    if (!isLoading && hasLanguageBeenSet) {
-      navigation.dispatch(
-        CommonActions.reset({
-          index: 0,
-          routes: [{ name: "Splash" }],
-        })
-      );
-    }
-  }, [isLoading, hasLanguageBeenSet]);
-
-  React.useEffect(() => {
-    if (!isLoading && !hasLanguageBeenSet) {
-      logoScale.value = withSpring(1, { damping: 12, stiffness: 100 });
-      contentOpacity.value = withDelay(300, withSpring(1));
-    }
-  }, [isLoading, hasLanguageBeenSet]);
+    logoScale.value = withSpring(1, { damping: 12, stiffness: 100 });
+    contentOpacity.value = withDelay(300, withSpring(1));
+  }, []);
 
   const logoStyle = useAnimatedStyle(() => ({
     transform: [{ scale: logoScale.value }],
@@ -72,15 +59,6 @@ export default function LanguageSelectionScreen() {
       })
     );
   };
-
-  if (isLoading || hasLanguageBeenSet) {
-    return (
-      <LinearGradient
-        colors={[AppColors.primary, AppColors.primaryDark]}
-        style={styles.container}
-      />
-    );
-  }
 
   return (
     <LinearGradient
