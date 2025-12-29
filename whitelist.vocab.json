@@ -1,0 +1,2468 @@
+{
+  "sections": [
+    {
+      "id": "vegetables",
+      "title": "Vegetables",
+      "difficulty": "beginner",
+      "maxQuestionsPerSession": 30,
+      "items": [
+        {
+          "id": "veg_01",
+          "word_nl": "wortel",
+          "word_en": "carrot",
+          "image_prompt": "single carrot on white background"
+        },
+        {
+          "id": "veg_02",
+          "word_nl": "tomaat",
+          "word_en": "tomato",
+          "image_prompt": "single tomato on white background"
+        },
+        {
+          "id": "veg_03",
+          "word_nl": "komkommer",
+          "word_en": "cucumber",
+          "image_prompt": "single cucumber on white background"
+        },
+        {
+          "id": "veg_04",
+          "word_nl": "ui",
+          "word_en": "onion",
+          "image_prompt": "single onion on white background"
+        },
+        {
+          "id": "veg_05",
+          "word_nl": "aardappel",
+          "word_en": "potato",
+          "image_prompt": "single potato on white background"
+        },
+        {
+          "id": "veg_06",
+          "word_nl": "sla",
+          "word_en": "lettuce",
+          "image_prompt": "single lettuce on white background"
+        },
+        {
+          "id": "veg_07",
+          "word_nl": "paprika",
+          "word_en": "bell pepper",
+          "image_prompt": "single bell pepper on white background"
+        },
+        {
+          "id": "veg_08",
+          "word_nl": "broccoli",
+          "word_en": "broccoli",
+          "image_prompt": "single broccoli on white background"
+        },
+        {
+          "id": "veg_09",
+          "word_nl": "courgette",
+          "word_en": "zucchini",
+          "image_prompt": "single zucchini on white background"
+        },
+        {
+          "id": "veg_10",
+          "word_nl": "knoflook",
+          "word_en": "garlic",
+          "image_prompt": "single garlic bulb on white background"
+        },
+        {
+          "id": "veg_11",
+          "word_nl": "spinazie",
+          "word_en": "spinach",
+          "image_prompt": "spinach leaves on white background"
+        },
+        {
+          "id": "veg_12",
+          "word_nl": "bloemkool",
+          "word_en": "cauliflower",
+          "image_prompt": "single cauliflower on white background"
+        },
+        {
+          "id": "veg_13",
+          "word_nl": "prei",
+          "word_en": "leek",
+          "image_prompt": "single leek on white background"
+        },
+        {
+          "id": "veg_14",
+          "word_nl": "champignon",
+          "word_en": "mushroom",
+          "image_prompt": "single mushroom on white background"
+        },
+        {
+          "id": "veg_15",
+          "word_nl": "aubergine",
+          "word_en": "eggplant",
+          "image_prompt": "single eggplant on white background"
+        },
+        {
+          "id": "veg_16",
+          "word_nl": "maïs",
+          "word_en": "corn",
+          "image_prompt": "single corn cob on white background"
+        },
+        {
+          "id": "veg_17",
+          "word_nl": "erwt",
+          "word_en": "pea",
+          "image_prompt": "green peas on white background"
+        },
+        {
+          "id": "veg_18",
+          "word_nl": "boon",
+          "word_en": "bean",
+          "image_prompt": "green beans on white background"
+        },
+        {
+          "id": "veg_19",
+          "word_nl": "radijs",
+          "word_en": "radish",
+          "image_prompt": "single radish on white background"
+        },
+        {
+          "id": "veg_20",
+          "word_nl": "selderij",
+          "word_en": "celery",
+          "image_prompt": "celery stalks on white background"
+        },
+        {
+          "id": "veg_21",
+          "word_nl": "asperge",
+          "word_en": "asparagus",
+          "image_prompt": "asparagus spears on white background"
+        },
+        {
+          "id": "veg_22",
+          "word_nl": "kool",
+          "word_en": "cabbage",
+          "image_prompt": "single cabbage on white background"
+        },
+        {
+          "id": "veg_23",
+          "word_nl": "biet",
+          "word_en": "beetroot",
+          "image_prompt": "single beetroot on white background"
+        },
+        {
+          "id": "veg_24",
+          "word_nl": "rode ui",
+          "word_en": "red onion",
+          "image_prompt": "single red onion on white background"
+        },
+        {
+          "id": "veg_25",
+          "word_nl": "zoete aardappel",
+          "word_en": "sweet potato",
+          "image_prompt": "single sweet potato on white background"
+        },
+        {
+          "id": "veg_26",
+          "word_nl": "ijsbergsla",
+          "word_en": "iceberg lettuce",
+          "image_prompt": "iceberg lettuce on white background"
+        },
+        {
+          "id": "veg_27",
+          "word_nl": "paksoi",
+          "word_en": "bok choy",
+          "image_prompt": "bok choy on white background"
+        },
+        {
+          "id": "veg_28",
+          "word_nl": "kikkererwt",
+          "word_en": "chickpea",
+          "image_prompt": "chickpeas on white background"
+        },
+        {
+          "id": "veg_29",
+          "word_nl": "linze",
+          "word_en": "lentil",
+          "image_prompt": "lentils on white background"
+        },
+        {
+          "id": "veg_30",
+          "word_nl": "spruitjes",
+          "word_en": "brussels sprouts",
+          "image_prompt": "brussels sprouts on white background"
+        },
+        {
+          "id": "veg_31",
+          "word_nl": "rode paprika",
+          "word_en": "red pepper",
+          "image_prompt": "single red bell pepper on white background"
+        },
+        {
+          "id": "veg_32",
+          "word_nl": "gele paprika",
+          "word_en": "yellow pepper",
+          "image_prompt": "single yellow bell pepper on white background"
+        },
+        {
+          "id": "veg_33",
+          "word_nl": "groene paprika",
+          "word_en": "green pepper",
+          "image_prompt": "single green bell pepper on white background"
+        },
+        {
+          "id": "veg_34",
+          "word_nl": "cherrytomaat",
+          "word_en": "cherry tomato",
+          "image_prompt": "single cherry tomato on white background"
+        },
+        {
+          "id": "veg_35",
+          "word_nl": "venkel",
+          "word_en": "fennel",
+          "image_prompt": "single fennel bulb on white background"
+        },
+        {
+          "id": "veg_36",
+          "word_nl": "rucola",
+          "word_en": "arugula",
+          "image_prompt": "arugula leaves on white background"
+        },
+        {
+          "id": "veg_37",
+          "word_nl": "andijvie",
+          "word_en": "endive",
+          "image_prompt": "endive leaves on white background"
+        },
+        {
+          "id": "veg_38",
+          "word_nl": "snijboon",
+          "word_en": "flat bean",
+          "image_prompt": "flat green beans on white background"
+        },
+        {
+          "id": "veg_39",
+          "word_nl": "pompoen",
+          "word_en": "pumpkin",
+          "image_prompt": "single pumpkin on white background"
+        },
+        {
+          "id": "veg_40",
+          "word_nl": "koolrabi",
+          "word_en": "kohlrabi",
+          "image_prompt": "single kohlrabi on white background"
+        },
+        {
+          "id": "veg_41",
+          "word_nl": "schorseneer",
+          "word_en": "salsify",
+          "image_prompt": "salsify root on white background"
+        },
+        {
+          "id": "veg_42",
+          "word_nl": "raap",
+          "word_en": "turnip",
+          "image_prompt": "single turnip on white background"
+        },
+        {
+          "id": "veg_43",
+          "word_nl": "pastinaak",
+          "word_en": "parsnip",
+          "image_prompt": "single parsnip on white background"
+        },
+        {
+          "id": "veg_44",
+          "word_nl": "rode kool",
+          "word_en": "red cabbage",
+          "image_prompt": "red cabbage on white background"
+        },
+        {
+          "id": "veg_45",
+          "word_nl": "witte kool",
+          "word_en": "white cabbage",
+          "image_prompt": "white cabbage on white background"
+        },
+        {
+          "id": "veg_46",
+          "word_nl": "savooiekool",
+          "word_en": "savoy cabbage",
+          "image_prompt": "savoy cabbage on white background"
+        },
+        {
+          "id": "veg_47",
+          "word_nl": "sojaboon",
+          "word_en": "soybean",
+          "image_prompt": "soybeans on white background"
+        },
+        {
+          "id": "veg_48",
+          "word_nl": "rode biet",
+          "word_en": "red beet",
+          "image_prompt": "red beetroot on white background"
+        },
+        {
+          "id": "veg_49",
+          "word_nl": "groene erwt",
+          "word_en": "green pea",
+          "image_prompt": "green peas on white background"
+        },
+        {
+          "id": "veg_50",
+          "word_nl": "witte ui",
+          "word_en": "white onion",
+          "image_prompt": "white onion on white background"
+        }
+      ]
+    },
+    {
+      "id": "animals",
+      "title": "Animals",
+      "difficulty": "beginner",
+      "maxQuestionsPerSession": 30,
+      "items": [
+        {
+          "id": "an_01",
+          "word_nl": "hond",
+          "word_en": "dog",
+          "image_prompt": "single dog on white background"
+        },
+        {
+          "id": "an_02",
+          "word_nl": "kat",
+          "word_en": "cat",
+          "image_prompt": "single cat on white background"
+        },
+        {
+          "id": "an_03",
+          "word_nl": "koe",
+          "word_en": "cow",
+          "image_prompt": "single cow on white background"
+        },
+        {
+          "id": "an_04",
+          "word_nl": "paard",
+          "word_en": "horse",
+          "image_prompt": "single horse on white background"
+        },
+        {
+          "id": "an_05",
+          "word_nl": "vogel",
+          "word_en": "bird",
+          "image_prompt": "single bird on white background"
+        },
+        {
+          "id": "an_06",
+          "word_nl": "vis",
+          "word_en": "fish",
+          "image_prompt": "single fish on white background"
+        },
+        {
+          "id": "an_07",
+          "word_nl": "kip",
+          "word_en": "chicken",
+          "image_prompt": "single chicken on white background"
+        },
+        {
+          "id": "an_08",
+          "word_nl": "schaap",
+          "word_en": "sheep",
+          "image_prompt": "single sheep on white background"
+        },
+        {
+          "id": "an_09",
+          "word_nl": "varken",
+          "word_en": "pig",
+          "image_prompt": "single pig on white background"
+        },
+        {
+          "id": "an_10",
+          "word_nl": "konijn",
+          "word_en": "rabbit",
+          "image_prompt": "single rabbit on white background"
+        },
+        {
+          "id": "an_11",
+          "word_nl": "geit",
+          "word_en": "goat",
+          "image_prompt": "single goat on white background"
+        },
+        {
+          "id": "an_12",
+          "word_nl": "eend",
+          "word_en": "duck",
+          "image_prompt": "single duck on white background"
+        },
+        {
+          "id": "an_13",
+          "word_nl": "gans",
+          "word_en": "goose",
+          "image_prompt": "single goose on white background"
+        },
+        {
+          "id": "an_14",
+          "word_nl": "kalkoen",
+          "word_en": "turkey",
+          "image_prompt": "single turkey on white background"
+        },
+        {
+          "id": "an_15",
+          "word_nl": "duif",
+          "word_en": "pigeon",
+          "image_prompt": "single pigeon on white background"
+        },
+        {
+          "id": "an_16",
+          "word_nl": "hamster",
+          "word_en": "hamster",
+          "image_prompt": "single hamster on white background"
+        },
+        {
+          "id": "an_17",
+          "word_nl": "muis",
+          "word_en": "mouse",
+          "image_prompt": "single mouse on white background"
+        },
+        {
+          "id": "an_18",
+          "word_nl": "rat",
+          "word_en": "rat",
+          "image_prompt": "single rat on white background"
+        },
+        {
+          "id": "an_19",
+          "word_nl": "ezel",
+          "word_en": "donkey",
+          "image_prompt": "single donkey on white background"
+        },
+        {
+          "id": "an_20",
+          "word_nl": "hert",
+          "word_en": "deer",
+          "image_prompt": "single deer on white background"
+        },
+        {
+          "id": "an_21",
+          "word_nl": "beer",
+          "word_en": "bear",
+          "image_prompt": "single bear on white background"
+        },
+        {
+          "id": "an_22",
+          "word_nl": "leeuw",
+          "word_en": "lion",
+          "image_prompt": "single lion on white background"
+        },
+        {
+          "id": "an_23",
+          "word_nl": "tijger",
+          "word_en": "tiger",
+          "image_prompt": "single tiger on white background"
+        },
+        {
+          "id": "an_24",
+          "word_nl": "olifant",
+          "word_en": "elephant",
+          "image_prompt": "single elephant on white background"
+        },
+        {
+          "id": "an_25",
+          "word_nl": "giraf",
+          "word_en": "giraffe",
+          "image_prompt": "single giraffe on white background"
+        },
+        {
+          "id": "an_26",
+          "word_nl": "zebra",
+          "word_en": "zebra",
+          "image_prompt": "single zebra on white background"
+        },
+        {
+          "id": "an_27",
+          "word_nl": "aap",
+          "word_en": "monkey",
+          "image_prompt": "single monkey on white background"
+        },
+        {
+          "id": "an_28",
+          "word_nl": "slang",
+          "word_en": "snake",
+          "image_prompt": "single snake on white background"
+        },
+        {
+          "id": "an_29",
+          "word_nl": "kikker",
+          "word_en": "frog",
+          "image_prompt": "single frog on white background"
+        },
+        {
+          "id": "an_30",
+          "word_nl": "schildpad",
+          "word_en": "turtle",
+          "image_prompt": "single turtle on white background"
+        },
+        {
+          "id": "an_31",
+          "word_nl": "haai",
+          "word_en": "shark",
+          "image_prompt": "single shark on white background"
+        },
+        {
+          "id": "an_32",
+          "word_nl": "dolfijn",
+          "word_en": "dolphin",
+          "image_prompt": "single dolphin on white background"
+        },
+        {
+          "id": "an_33",
+          "word_nl": "walvis",
+          "word_en": "whale",
+          "image_prompt": "single whale on white background"
+        },
+        {
+          "id": "an_34",
+          "word_nl": "krab",
+          "word_en": "crab",
+          "image_prompt": "single crab on white background"
+        },
+        {
+          "id": "an_35",
+          "word_nl": "garnaal",
+          "word_en": "shrimp",
+          "image_prompt": "single shrimp on white background"
+        },
+        {
+          "id": "an_36",
+          "word_nl": "vlinder",
+          "word_en": "butterfly",
+          "image_prompt": "single butterfly on white background"
+        },
+        {
+          "id": "an_37",
+          "word_nl": "bij",
+          "word_en": "bee",
+          "image_prompt": "single bee on white background"
+        },
+        {
+          "id": "an_38",
+          "word_nl": "mier",
+          "word_en": "ant",
+          "image_prompt": "single ant on white background"
+        },
+        {
+          "id": "an_39",
+          "word_nl": "spin",
+          "word_en": "spider",
+          "image_prompt": "single spider on white background"
+        },
+        {
+          "id": "an_40",
+          "word_nl": "paard veulen",
+          "word_en": "foal",
+          "image_prompt": "young horse foal on white background"
+        },
+        {
+          "id": "an_41",
+          "word_nl": "koe kalf",
+          "word_en": "calf",
+          "image_prompt": "young cow calf on white background"
+        },
+        {
+          "id": "an_42",
+          "word_nl": "hond puppy",
+          "word_en": "puppy",
+          "image_prompt": "puppy dog on white background"
+        },
+        {
+          "id": "an_43",
+          "word_nl": "kat kitten",
+          "word_en": "kitten",
+          "image_prompt": "kitten cat on white background"
+        },
+        {
+          "id": "an_44",
+          "word_nl": "vogel mus",
+          "word_en": "sparrow",
+          "image_prompt": "sparrow bird on white background"
+        },
+        {
+          "id": "an_45",
+          "word_nl": "eend kuiken",
+          "word_en": "duckling",
+          "image_prompt": "duckling on white background"
+        },
+        {
+          "id": "an_46",
+          "word_nl": "kip hen",
+          "word_en": "hen",
+          "image_prompt": "hen chicken on white background"
+        },
+        {
+          "id": "an_47",
+          "word_nl": "vis goudvis",
+          "word_en": "goldfish",
+          "image_prompt": "goldfish on white background"
+        },
+        {
+          "id": "an_48",
+          "word_nl": "konijn wit",
+          "word_en": "white rabbit",
+          "image_prompt": "white rabbit on white background"
+        },
+        {
+          "id": "an_49",
+          "word_nl": "geit jong",
+          "word_en": "young goat",
+          "image_prompt": "young goat on white background"
+        },
+        {
+          "id": "an_50",
+          "word_nl": "schaap lam",
+          "word_en": "lamb",
+          "image_prompt": "lamb sheep on white background"
+        }
+      ]
+    },
+    {
+      "id": "colors",
+      "title": "Colors",
+      "difficulty": "beginner",
+      "maxQuestionsPerSession": 30,
+      "items": [
+        {
+          "id": "co_01",
+          "word_nl": "rood",
+          "word_en": "red",
+          "image_prompt": "solid red color background"
+        },
+        {
+          "id": "co_02",
+          "word_nl": "blauw",
+          "word_en": "blue",
+          "image_prompt": "solid blue color background"
+        },
+        {
+          "id": "co_03",
+          "word_nl": "geel",
+          "word_en": "yellow",
+          "image_prompt": "solid yellow color background"
+        },
+        {
+          "id": "co_04",
+          "word_nl": "groen",
+          "word_en": "green",
+          "image_prompt": "solid green color background"
+        },
+        {
+          "id": "co_05",
+          "word_nl": "zwart",
+          "word_en": "black",
+          "image_prompt": "solid black color background"
+        },
+        {
+          "id": "co_06",
+          "word_nl": "wit",
+          "word_en": "white",
+          "image_prompt": "solid white color background"
+        },
+        {
+          "id": "co_07",
+          "word_nl": "oranje",
+          "word_en": "orange",
+          "image_prompt": "solid orange color background"
+        },
+        {
+          "id": "co_08",
+          "word_nl": "bruin",
+          "word_en": "brown",
+          "image_prompt": "solid brown color background"
+        },
+        {
+          "id": "co_09",
+          "word_nl": "grijs",
+          "word_en": "gray",
+          "image_prompt": "solid gray color background"
+        },
+        {
+          "id": "co_10",
+          "word_nl": "paars",
+          "word_en": "purple",
+          "image_prompt": "solid purple color background"
+        },
+        {
+          "id": "co_11",
+          "word_nl": "roze",
+          "word_en": "pink",
+          "image_prompt": "solid pink color background"
+        },
+        {
+          "id": "co_12",
+          "word_nl": "beige",
+          "word_en": "beige",
+          "image_prompt": "solid beige color background"
+        },
+        {
+          "id": "co_13",
+          "word_nl": "turkoois",
+          "word_en": "turquoise",
+          "image_prompt": "solid turquoise color background"
+        },
+        {
+          "id": "co_14",
+          "word_nl": "lichtblauw",
+          "word_en": "light blue",
+          "image_prompt": "solid light blue color background"
+        },
+        {
+          "id": "co_15",
+          "word_nl": "donkerblauw",
+          "word_en": "dark blue",
+          "image_prompt": "solid dark blue color background"
+        },
+        {
+          "id": "co_16",
+          "word_nl": "lichtgroen",
+          "word_en": "light green",
+          "image_prompt": "solid light green color background"
+        },
+        {
+          "id": "co_17",
+          "word_nl": "donkergroen",
+          "word_en": "dark green",
+          "image_prompt": "solid dark green color background"
+        },
+        {
+          "id": "co_18",
+          "word_nl": "bordeaux",
+          "word_en": "burgundy",
+          "image_prompt": "solid burgundy color background"
+        },
+        {
+          "id": "co_19",
+          "word_nl": "goud",
+          "word_en": "gold",
+          "image_prompt": "solid gold color background"
+        },
+        {
+          "id": "co_20",
+          "word_nl": "zilver",
+          "word_en": "silver",
+          "image_prompt": "solid silver color background"
+        },
+        {
+          "id": "co_21",
+          "word_nl": "oker",
+          "word_en": "ochre",
+          "image_prompt": "solid ochre color background"
+        },
+        {
+          "id": "co_22",
+          "word_nl": "crème",
+          "word_en": "cream",
+          "image_prompt": "solid cream color background"
+        },
+        {
+          "id": "co_23",
+          "word_nl": "ivoor",
+          "word_en": "ivory",
+          "image_prompt": "solid ivory color background"
+        },
+        {
+          "id": "co_24",
+          "word_nl": "mintgroen",
+          "word_en": "mint green",
+          "image_prompt": "solid mint green color background"
+        },
+        {
+          "id": "co_25",
+          "word_nl": "olijfgroen",
+          "word_en": "olive green",
+          "image_prompt": "solid olive green color background"
+        },
+        {
+          "id": "co_26",
+          "word_nl": "hemelsblauw",
+          "word_en": "sky blue",
+          "image_prompt": "solid sky blue color background"
+        },
+        {
+          "id": "co_27",
+          "word_nl": "nachtblauw",
+          "word_en": "navy blue",
+          "image_prompt": "solid navy blue color background"
+        },
+        {
+          "id": "co_28",
+          "word_nl": "koraal",
+          "word_en": "coral",
+          "image_prompt": "solid coral color background"
+        },
+        {
+          "id": "co_29",
+          "word_nl": "lavendel",
+          "word_en": "lavender",
+          "image_prompt": "solid lavender color background"
+        },
+        {
+          "id": "co_30",
+          "word_nl": "mosterd",
+          "word_en": "mustard",
+          "image_prompt": "solid mustard color background"
+        },
+        {
+          "id": "co_31",
+          "word_nl": "perzik",
+          "word_en": "peach",
+          "image_prompt": "solid peach color background"
+        },
+        {
+          "id": "co_32",
+          "word_nl": "chocoladebruin",
+          "word_en": "chocolate brown",
+          "image_prompt": "solid chocolate brown color background"
+        },
+        {
+          "id": "co_33",
+          "word_nl": "houtkleur",
+          "word_en": "wood color",
+          "image_prompt": "solid wood color background"
+        },
+        {
+          "id": "co_34",
+          "word_nl": "antraciet",
+          "word_en": "anthracite",
+          "image_prompt": "solid anthracite color background"
+        },
+        {
+          "id": "co_35",
+          "word_nl": "asgrijs",
+          "word_en": "ash gray",
+          "image_prompt": "solid ash gray color background"
+        },
+        {
+          "id": "co_36",
+          "word_nl": "citroengeel",
+          "word_en": "lemon yellow",
+          "image_prompt": "solid lemon yellow color background"
+        },
+        {
+          "id": "co_37",
+          "word_nl": "grasgroen",
+          "word_en": "grass green",
+          "image_prompt": "solid grass green color background"
+        },
+        {
+          "id": "co_38",
+          "word_nl": "appelgroen",
+          "word_en": "apple green",
+          "image_prompt": "solid apple green color background"
+        },
+        {
+          "id": "co_39",
+          "word_nl": "wijnrood",
+          "word_en": "wine red",
+          "image_prompt": "solid wine red color background"
+        },
+        {
+          "id": "co_40",
+          "word_nl": "ijsblauw",
+          "word_en": "ice blue",
+          "image_prompt": "solid ice blue color background"
+        },
+        {
+          "id": "co_41",
+          "word_nl": "zandkleur",
+          "word_en": "sand color",
+          "image_prompt": "solid sand color background"
+        },
+        {
+          "id": "co_42",
+          "word_nl": "koper",
+          "word_en": "copper",
+          "image_prompt": "solid copper color background"
+        },
+        {
+          "id": "co_43",
+          "word_nl": "brons",
+          "word_en": "bronze",
+          "image_prompt": "solid bronze color background"
+        },
+        {
+          "id": "co_44",
+          "word_nl": "pastelroze",
+          "word_en": "pastel pink",
+          "image_prompt": "solid pastel pink color background"
+        },
+        {
+          "id": "co_45",
+          "word_nl": "pastelblauw",
+          "word_en": "pastel blue",
+          "image_prompt": "solid pastel blue color background"
+        },
+        {
+          "id": "co_46",
+          "word_nl": "pastelgroen",
+          "word_en": "pastel green",
+          "image_prompt": "solid pastel green color background"
+        },
+        {
+          "id": "co_47",
+          "word_nl": "donkerpaars",
+          "word_en": "dark purple",
+          "image_prompt": "solid dark purple color background"
+        },
+        {
+          "id": "co_48",
+          "word_nl": "lichtpaars",
+          "word_en": "light purple",
+          "image_prompt": "solid light purple color background"
+        },
+        {
+          "id": "co_49",
+          "word_nl": "grafiet",
+          "word_en": "graphite",
+          "image_prompt": "solid graphite color background"
+        },
+        {
+          "id": "co_50",
+          "word_nl": "roomwit",
+          "word_en": "off white",
+          "image_prompt": "solid off white color background"
+        }
+      ]
+    },
+    {
+      "id": "food_drinks",
+      "title": "Food & Drinks",
+      "difficulty": "beginner",
+      "maxQuestionsPerSession": 30,
+      "items": [
+        {
+          "id": "fd_01",
+          "word_nl": "brood",
+          "word_en": "bread",
+          "image_prompt": "single loaf of bread on white background"
+        },
+        {
+          "id": "fd_02",
+          "word_nl": "water",
+          "word_en": "water",
+          "image_prompt": "glass of water on white background"
+        },
+        {
+          "id": "fd_03",
+          "word_nl": "melk",
+          "word_en": "milk",
+          "image_prompt": "glass of milk on white background"
+        },
+        {
+          "id": "fd_04",
+          "word_nl": "koffie",
+          "word_en": "coffee",
+          "image_prompt": "cup of coffee on white background"
+        },
+        {
+          "id": "fd_05",
+          "word_nl": "thee",
+          "word_en": "tea",
+          "image_prompt": "cup of tea on white background"
+        },
+        {
+          "id": "fd_06",
+          "word_nl": "kaas",
+          "word_en": "cheese",
+          "image_prompt": "single piece of cheese on white background"
+        },
+        {
+          "id": "fd_07",
+          "word_nl": "rijst",
+          "word_en": "rice",
+          "image_prompt": "bowl of rice on white background"
+        },
+        {
+          "id": "fd_08",
+          "word_nl": "pasta",
+          "word_en": "pasta",
+          "image_prompt": "plate of pasta on white background"
+        },
+        {
+          "id": "fd_09",
+          "word_nl": "vlees",
+          "word_en": "meat",
+          "image_prompt": "piece of meat on white background"
+        },
+        {
+          "id": "fd_10",
+          "word_nl": "kip",
+          "word_en": "chicken",
+          "image_prompt": "raw chicken meat on white background"
+        },
+        {
+          "id": "fd_11",
+          "word_nl": "vis",
+          "word_en": "fish",
+          "image_prompt": "raw fish on white background"
+        },
+        {
+          "id": "fd_12",
+          "word_nl": "ei",
+          "word_en": "egg",
+          "image_prompt": "single egg on white background"
+        },
+        {
+          "id": "fd_13",
+          "word_nl": "boter",
+          "word_en": "butter",
+          "image_prompt": "block of butter on white background"
+        },
+        {
+          "id": "fd_14",
+          "word_nl": "olie",
+          "word_en": "oil",
+          "image_prompt": "bottle of cooking oil on white background"
+        },
+        {
+          "id": "fd_15",
+          "word_nl": "zout",
+          "word_en": "salt",
+          "image_prompt": "salt in bowl on white background"
+        },
+        {
+          "id": "fd_16",
+          "word_nl": "suiker",
+          "word_en": "sugar",
+          "image_prompt": "sugar in bowl on white background"
+        },
+        {
+          "id": "fd_17",
+          "word_nl": "honing",
+          "word_en": "honey",
+          "image_prompt": "jar of honey on white background"
+        },
+        {
+          "id": "fd_18",
+          "word_nl": "jam",
+          "word_en": "jam",
+          "image_prompt": "jar of jam on white background"
+        },
+        {
+          "id": "fd_19",
+          "word_nl": "yoghurt",
+          "word_en": "yogurt",
+          "image_prompt": "bowl of yogurt on white background"
+        },
+        {
+          "id": "fd_20",
+          "word_nl": "ontbijtgranen",
+          "word_en": "cereal",
+          "image_prompt": "bowl of cereal on white background"
+        },
+        {
+          "id": "fd_21",
+          "word_nl": "soep",
+          "word_en": "soup",
+          "image_prompt": "bowl of soup on white background"
+        },
+        {
+          "id": "fd_22",
+          "word_nl": "salade",
+          "word_en": "salad",
+          "image_prompt": "bowl of salad on white background"
+        },
+        {
+          "id": "fd_23",
+          "word_nl": "pizza",
+          "word_en": "pizza",
+          "image_prompt": "slice of pizza on white background"
+        },
+        {
+          "id": "fd_24",
+          "word_nl": "hamburger",
+          "word_en": "hamburger",
+          "image_prompt": "hamburger on white background"
+        },
+        {
+          "id": "fd_25",
+          "word_nl": "sandwich",
+          "word_en": "sandwich",
+          "image_prompt": "sandwich on white background"
+        },
+        {
+          "id": "fd_26",
+          "word_nl": "appelmoes",
+          "word_en": "apple sauce",
+          "image_prompt": "bowl of applesauce on white background"
+        },
+        {
+          "id": "fd_27",
+          "word_nl": "pannenkoek",
+          "word_en": "pancake",
+          "image_prompt": "single pancake on white background"
+        },
+        {
+          "id": "fd_28",
+          "word_nl": "cake",
+          "word_en": "cake",
+          "image_prompt": "slice of cake on white background"
+        },
+        {
+          "id": "fd_29",
+          "word_nl": "koekje",
+          "word_en": "cookie",
+          "image_prompt": "single cookie on white background"
+        },
+        {
+          "id": "fd_30",
+          "word_nl": "chocolade",
+          "word_en": "chocolate",
+          "image_prompt": "piece of chocolate on white background"
+        },
+        {
+          "id": "fd_31",
+          "word_nl": "ijs",
+          "word_en": "ice cream",
+          "image_prompt": "ice cream scoop on white background"
+        },
+        {
+          "id": "fd_32",
+          "word_nl": "frisdrank",
+          "word_en": "soft drink",
+          "image_prompt": "glass of soft drink on white background"
+        },
+        {
+          "id": "fd_33",
+          "word_nl": "sap",
+          "word_en": "juice",
+          "image_prompt": "glass of fruit juice on white background"
+        },
+        {
+          "id": "fd_34",
+          "word_nl": "bier",
+          "word_en": "beer",
+          "image_prompt": "glass of beer on white background"
+        },
+        {
+          "id": "fd_35",
+          "word_nl": "wijn",
+          "word_en": "wine",
+          "image_prompt": "glass of wine on white background"
+        },
+        {
+          "id": "fd_36",
+          "word_nl": "saus",
+          "word_en": "sauce",
+          "image_prompt": "bowl of sauce on white background"
+        },
+        {
+          "id": "fd_37",
+          "word_nl": "mayonaise",
+          "word_en": "mayonnaise",
+          "image_prompt": "bowl of mayonnaise on white background"
+        },
+        {
+          "id": "fd_38",
+          "word_nl": "ketchup",
+          "word_en": "ketchup",
+          "image_prompt": "bottle of ketchup on white background"
+        },
+        {
+          "id": "fd_39",
+          "word_nl": "mosterd",
+          "word_en": "mustard",
+          "image_prompt": "bowl of mustard on white background"
+        },
+        {
+          "id": "fd_40",
+          "word_nl": "azijn",
+          "word_en": "vinegar",
+          "image_prompt": "bottle of vinegar on white background"
+        },
+        {
+          "id": "fd_41",
+          "word_nl": "noedels",
+          "word_en": "noodles",
+          "image_prompt": "bowl of noodles on white background"
+        },
+        {
+          "id": "fd_42",
+          "word_nl": "gehakt",
+          "word_en": "minced meat",
+          "image_prompt": "minced meat on white background"
+        },
+        {
+          "id": "fd_43",
+          "word_nl": "worst",
+          "word_en": "sausage",
+          "image_prompt": "single sausage on white background"
+        },
+        {
+          "id": "fd_44",
+          "word_nl": "ham",
+          "word_en": "ham",
+          "image_prompt": "slice of ham on white background"
+        },
+        {
+          "id": "fd_45",
+          "word_nl": "bacon",
+          "word_en": "bacon",
+          "image_prompt": "bacon strips on white background"
+        },
+        {
+          "id": "fd_46",
+          "word_nl": "kaasblokjes",
+          "word_en": "cheese cubes",
+          "image_prompt": "cheese cubes on white background"
+        },
+        {
+          "id": "fd_47",
+          "word_nl": "noten",
+          "word_en": "nuts",
+          "image_prompt": "nuts on white background"
+        },
+        {
+          "id": "fd_48",
+          "word_nl": "pindakaas",
+          "word_en": "peanut butter",
+          "image_prompt": "jar of peanut butter on white background"
+        },
+        {
+          "id": "fd_49",
+          "word_nl": "cornflakes",
+          "word_en": "cornflakes",
+          "image_prompt": "bowl of cornflakes on white background"
+        },
+        {
+          "id": "fd_50",
+          "word_nl": "kwark",
+          "word_en": "quark",
+          "image_prompt": "bowl of quark yogurt on white background"
+        }
+      ]
+    },
+    {
+      "id": "transportation",
+      "title": "Transportation",
+      "difficulty": "beginner",
+      "maxQuestionsPerSession": 30,
+      "items": [
+        {
+          "id": "tr_01",
+          "word_nl": "auto",
+          "word_en": "car",
+          "image_prompt": "single car on white background"
+        },
+        {
+          "id": "tr_02",
+          "word_nl": "fiets",
+          "word_en": "bicycle",
+          "image_prompt": "single bicycle on white background"
+        },
+        {
+          "id": "tr_03",
+          "word_nl": "bus",
+          "word_en": "bus",
+          "image_prompt": "single bus on white background"
+        },
+        {
+          "id": "tr_04",
+          "word_nl": "trein",
+          "word_en": "train",
+          "image_prompt": "single train on white background"
+        },
+        {
+          "id": "tr_05",
+          "word_nl": "tram",
+          "word_en": "tram",
+          "image_prompt": "single tram on white background"
+        },
+        {
+          "id": "tr_06",
+          "word_nl": "metro",
+          "word_en": "metro",
+          "image_prompt": "single metro train on white background"
+        },
+        {
+          "id": "tr_07",
+          "word_nl": "taxi",
+          "word_en": "taxi",
+          "image_prompt": "single taxi car on white background"
+        },
+        {
+          "id": "tr_08",
+          "word_nl": "vliegtuig",
+          "word_en": "airplane",
+          "image_prompt": "single airplane on white background"
+        },
+        {
+          "id": "tr_09",
+          "word_nl": "boot",
+          "word_en": "boat",
+          "image_prompt": "single boat on white background"
+        },
+        {
+          "id": "tr_10",
+          "word_nl": "schip",
+          "word_en": "ship",
+          "image_prompt": "single ship on white background"
+        },
+        {
+          "id": "tr_11",
+          "word_nl": "motor",
+          "word_en": "motorcycle",
+          "image_prompt": "single motorcycle on white background"
+        },
+        {
+          "id": "tr_12",
+          "word_nl": "bromfiets",
+          "word_en": "moped",
+          "image_prompt": "single moped on white background"
+        },
+        {
+          "id": "tr_13",
+          "word_nl": "scooter",
+          "word_en": "scooter",
+          "image_prompt": "single scooter on white background"
+        },
+        {
+          "id": "tr_14",
+          "word_nl": "step",
+          "word_en": "kick scooter",
+          "image_prompt": "single kick scooter on white background"
+        },
+        {
+          "id": "tr_15",
+          "word_nl": "vrachtwagen",
+          "word_en": "truck",
+          "image_prompt": "single truck on white background"
+        },
+        {
+          "id": "tr_16",
+          "word_nl": "bestelbus",
+          "word_en": "van",
+          "image_prompt": "single delivery van on white background"
+        },
+        {
+          "id": "tr_17",
+          "word_nl": "ambulance",
+          "word_en": "ambulance",
+          "image_prompt": "single ambulance on white background"
+        },
+        {
+          "id": "tr_18",
+          "word_nl": "brandweerwagen",
+          "word_en": "fire truck",
+          "image_prompt": "single fire truck on white background"
+        },
+        {
+          "id": "tr_19",
+          "word_nl": "politieauto",
+          "word_en": "police car",
+          "image_prompt": "single police car on white background"
+        },
+        {
+          "id": "tr_20",
+          "word_nl": "treinstation",
+          "word_en": "train station",
+          "image_prompt": "simple train station building on white background"
+        },
+        {
+          "id": "tr_21",
+          "word_nl": "halte",
+          "word_en": "stop",
+          "image_prompt": "bus stop sign on white background"
+        },
+        {
+          "id": "tr_22",
+          "word_nl": "perron",
+          "word_en": "platform",
+          "image_prompt": "train platform on white background"
+        },
+        {
+          "id": "tr_23",
+          "word_nl": "spoor",
+          "word_en": "railway track",
+          "image_prompt": "railway track on white background"
+        },
+        {
+          "id": "tr_24",
+          "word_nl": "verkeerslicht",
+          "word_en": "traffic light",
+          "image_prompt": "single traffic light on white background"
+        },
+        {
+          "id": "tr_25",
+          "word_nl": "zebrapad",
+          "word_en": "crosswalk",
+          "image_prompt": "pedestrian crosswalk on white background"
+        },
+        {
+          "id": "tr_26",
+          "word_nl": "parkeerplaats",
+          "word_en": "parking space",
+          "image_prompt": "parking space sign on white background"
+        },
+        {
+          "id": "tr_27",
+          "word_nl": "parkeergarage",
+          "word_en": "parking garage",
+          "image_prompt": "parking garage building on white background"
+        },
+        {
+          "id": "tr_28",
+          "word_nl": "fietsrek",
+          "word_en": "bike rack",
+          "image_prompt": "bicycle rack on white background"
+        },
+        {
+          "id": "tr_29",
+          "word_nl": "rijbewijs",
+          "word_en": "driving license",
+          "image_prompt": "driving license card on white background"
+        },
+        {
+          "id": "tr_30",
+          "word_nl": "kenteken",
+          "word_en": "license plate",
+          "image_prompt": "car license plate on white background"
+        },
+        {
+          "id": "tr_31",
+          "word_nl": "snelweg",
+          "word_en": "highway",
+          "image_prompt": "highway road on white background"
+        },
+        {
+          "id": "tr_32",
+          "word_nl": "straat",
+          "word_en": "street",
+          "image_prompt": "street road on white background"
+        },
+        {
+          "id": "tr_33",
+          "word_nl": "weg",
+          "word_en": "road",
+          "image_prompt": "road on white background"
+        },
+        {
+          "id": "tr_34",
+          "word_nl": "brug",
+          "word_en": "bridge",
+          "image_prompt": "bridge on white background"
+        },
+        {
+          "id": "tr_35",
+          "word_nl": "tunnel",
+          "word_en": "tunnel",
+          "image_prompt": "tunnel on white background"
+        },
+        {
+          "id": "tr_36",
+          "word_nl": "veerboot",
+          "word_en": "ferry",
+          "image_prompt": "ferry boat on white background"
+        },
+        {
+          "id": "tr_37",
+          "word_nl": "helikopter",
+          "word_en": "helicopter",
+          "image_prompt": "single helicopter on white background"
+        },
+        {
+          "id": "tr_38",
+          "word_nl": "roltrap",
+          "word_en": "escalator",
+          "image_prompt": "escalator on white background"
+        },
+        {
+          "id": "tr_39",
+          "word_nl": "lift",
+          "word_en": "elevator",
+          "image_prompt": "elevator doors on white background"
+        },
+        {
+          "id": "tr_40",
+          "word_nl": "station",
+          "word_en": "station",
+          "image_prompt": "public transport station building on white background"
+        },
+        {
+          "id": "tr_41",
+          "word_nl": "kaartje",
+          "word_en": "ticket",
+          "image_prompt": "public transport ticket on white background"
+        },
+        {
+          "id": "tr_42",
+          "word_nl": "ov-chipkaart",
+          "word_en": "public transport card",
+          "image_prompt": "public transport card on white background"
+        },
+        {
+          "id": "tr_43",
+          "word_nl": "dienstregeling",
+          "word_en": "timetable",
+          "image_prompt": "transport timetable board on white background"
+        },
+        {
+          "id": "tr_44",
+          "word_nl": "instappen",
+          "word_en": "boarding",
+          "image_prompt": "boarding a bus icon on white background"
+        },
+        {
+          "id": "tr_45",
+          "word_nl": "uitstappen",
+          "word_en": "getting off",
+          "image_prompt": "leaving a bus icon on white background"
+        },
+        {
+          "id": "tr_46",
+          "word_nl": "file",
+          "word_en": "traffic jam",
+          "image_prompt": "traffic jam cars on white background"
+        },
+        {
+          "id": "tr_47",
+          "word_nl": "rotonde",
+          "word_en": "roundabout",
+          "image_prompt": "roundabout road on white background"
+        },
+        {
+          "id": "tr_48",
+          "word_nl": "verkeer",
+          "word_en": "traffic",
+          "image_prompt": "traffic icons on white background"
+        },
+        {
+          "id": "tr_49",
+          "word_nl": "oversteekplaats",
+          "word_en": "pedestrian crossing",
+          "image_prompt": "pedestrian crossing sign on white background"
+        },
+        {
+          "id": "tr_50",
+          "word_nl": "fietspad",
+          "word_en": "bike lane",
+          "image_prompt": "bicycle lane sign on white background"
+        }
+      ]
+    },
+    {
+      "id": "places",
+      "title": "Places",
+      "difficulty": "beginner",
+      "maxQuestionsPerSession": 30,
+      "items": [
+        {
+          "id": "pl_01",
+          "word_nl": "huis",
+          "word_en": "house",
+          "image_prompt": "single house building on white background"
+        },
+        {
+          "id": "pl_02",
+          "word_nl": "appartement",
+          "word_en": "apartment",
+          "image_prompt": "apartment building on white background"
+        },
+        {
+          "id": "pl_03",
+          "word_nl": "straat",
+          "word_en": "street",
+          "image_prompt": "street road on white background"
+        },
+        {
+          "id": "pl_04",
+          "word_nl": "plein",
+          "word_en": "square",
+          "image_prompt": "town square on white background"
+        },
+        {
+          "id": "pl_05",
+          "word_nl": "stad",
+          "word_en": "city",
+          "image_prompt": "city skyline on white background"
+        },
+        {
+          "id": "pl_06",
+          "word_nl": "dorp",
+          "word_en": "village",
+          "image_prompt": "small village on white background"
+        },
+        {
+          "id": "pl_07",
+          "word_nl": "school",
+          "word_en": "school",
+          "image_prompt": "school building on white background"
+        },
+        {
+          "id": "pl_08",
+          "word_nl": "universiteit",
+          "word_en": "university",
+          "image_prompt": "university building on white background"
+        },
+        {
+          "id": "pl_09",
+          "word_nl": "ziekenhuis",
+          "word_en": "hospital",
+          "image_prompt": "hospital building on white background"
+        },
+        {
+          "id": "pl_10",
+          "word_nl": "apotheek",
+          "word_en": "pharmacy",
+          "image_prompt": "pharmacy building on white background"
+        },
+        {
+          "id": "pl_11",
+          "word_nl": "winkel",
+          "word_en": "shop",
+          "image_prompt": "small shop front on white background"
+        },
+        {
+          "id": "pl_12",
+          "word_nl": "supermarkt",
+          "word_en": "supermarket",
+          "image_prompt": "supermarket building on white background"
+        },
+        {
+          "id": "pl_13",
+          "word_nl": "markt",
+          "word_en": "market",
+          "image_prompt": "outdoor market stalls on white background"
+        },
+        {
+          "id": "pl_14",
+          "word_nl": "restaurant",
+          "word_en": "restaurant",
+          "image_prompt": "restaurant building on white background"
+        },
+        {
+          "id": "pl_15",
+          "word_nl": "café",
+          "word_en": "cafe",
+          "image_prompt": "cafe building on white background"
+        },
+        {
+          "id": "pl_16",
+          "word_nl": "bakkerij",
+          "word_en": "bakery",
+          "image_prompt": "bakery shop front on white background"
+        },
+        {
+          "id": "pl_17",
+          "word_nl": "slagerij",
+          "word_en": "butcher shop",
+          "image_prompt": "butcher shop front on white background"
+        },
+        {
+          "id": "pl_18",
+          "word_nl": "postkantoor",
+          "word_en": "post office",
+          "image_prompt": "post office building on white background"
+        },
+        {
+          "id": "pl_19",
+          "word_nl": "bank",
+          "word_en": "bank",
+          "image_prompt": "bank building on white background"
+        },
+        {
+          "id": "pl_20",
+          "word_nl": "gemeentehuis",
+          "word_en": "city hall",
+          "image_prompt": "city hall building on white background"
+        },
+        {
+          "id": "pl_21",
+          "word_nl": "politiebureau",
+          "word_en": "police station",
+          "image_prompt": "police station building on white background"
+        },
+        {
+          "id": "pl_22",
+          "word_nl": "brandweer",
+          "word_en": "fire station",
+          "image_prompt": "fire station building on white background"
+        },
+        {
+          "id": "pl_23",
+          "word_nl": "bibliotheek",
+          "word_en": "library",
+          "image_prompt": "library building on white background"
+        },
+        {
+          "id": "pl_24",
+          "word_nl": "kerk",
+          "word_en": "church",
+          "image_prompt": "church building on white background"
+        },
+        {
+          "id": "pl_25",
+          "word_nl": "moskee",
+          "word_en": "mosque",
+          "image_prompt": "mosque building on white background"
+        },
+        {
+          "id": "pl_26",
+          "word_nl": "park",
+          "word_en": "park",
+          "image_prompt": "city park on white background"
+        },
+        {
+          "id": "pl_27",
+          "word_nl": "tuin",
+          "word_en": "garden",
+          "image_prompt": "garden on white background"
+        },
+        {
+          "id": "pl_28",
+          "word_nl": "speeltuin",
+          "word_en": "playground",
+          "image_prompt": "children playground on white background"
+        },
+        {
+          "id": "pl_29",
+          "word_nl": "sporthal",
+          "word_en": "sports hall",
+          "image_prompt": "sports hall building on white background"
+        },
+        {
+          "id": "pl_30",
+          "word_nl": "zwembad",
+          "word_en": "swimming pool",
+          "image_prompt": "swimming pool on white background"
+        },
+        {
+          "id": "pl_31",
+          "word_nl": "station",
+          "word_en": "station",
+          "image_prompt": "train station building on white background"
+        },
+        {
+          "id": "pl_32",
+          "word_nl": "halte",
+          "word_en": "stop",
+          "image_prompt": "bus stop sign on white background"
+        },
+        {
+          "id": "pl_33",
+          "word_nl": "luchthaven",
+          "word_en": "airport",
+          "image_prompt": "airport terminal building on white background"
+        },
+        {
+          "id": "pl_34",
+          "word_nl": "hotel",
+          "word_en": "hotel",
+          "image_prompt": "hotel building on white background"
+        },
+        {
+          "id": "pl_35",
+          "word_nl": "hostel",
+          "word_en": "hostel",
+          "image_prompt": "hostel building on white background"
+        },
+        {
+          "id": "pl_36",
+          "word_nl": "kantoor",
+          "word_en": "office",
+          "image_prompt": "office building on white background"
+        },
+        {
+          "id": "pl_37",
+          "word_nl": "fabriek",
+          "word_en": "factory",
+          "image_prompt": "factory building on white background"
+        },
+        {
+          "id": "pl_38",
+          "word_nl": "magazijn",
+          "word_en": "warehouse",
+          "image_prompt": "warehouse building on white background"
+        },
+        {
+          "id": "pl_39",
+          "word_nl": "winkelcentrum",
+          "word_en": "shopping mall",
+          "image_prompt": "shopping mall building on white background"
+        },
+        {
+          "id": "pl_40",
+          "word_nl": "garage",
+          "word_en": "garage",
+          "image_prompt": "car garage building on white background"
+        },
+        {
+          "id": "pl_41",
+          "word_nl": "parkeerplaats",
+          "word_en": "parking place",
+          "image_prompt": "parking area on white background"
+        },
+        {
+          "id": "pl_42",
+          "word_nl": "fietsenstalling",
+          "word_en": "bike parking",
+          "image_prompt": "bike parking area on white background"
+        },
+        {
+          "id": "pl_43",
+          "word_nl": "brug",
+          "word_en": "bridge",
+          "image_prompt": "bridge structure on white background"
+        },
+        {
+          "id": "pl_44",
+          "word_nl": "tunnel",
+          "word_en": "tunnel",
+          "image_prompt": "tunnel entrance on white background"
+        },
+        {
+          "id": "pl_45",
+          "word_nl": "strand",
+          "word_en": "beach",
+          "image_prompt": "beach landscape on white background"
+        },
+        {
+          "id": "pl_46",
+          "word_nl": "bos",
+          "word_en": "forest",
+          "image_prompt": "forest trees on white background"
+        },
+        {
+          "id": "pl_47",
+          "word_nl": "meer",
+          "word_en": "lake",
+          "image_prompt": "lake on white background"
+        },
+        {
+          "id": "pl_48",
+          "word_nl": "rivier",
+          "word_en": "river",
+          "image_prompt": "river on white background"
+        },
+        {
+          "id": "pl_49",
+          "word_nl": "heuvel",
+          "word_en": "hill",
+          "image_prompt": "hill landscape on white background"
+        },
+        {
+          "id": "pl_50",
+          "word_nl": "veld",
+          "word_en": "field",
+          "image_prompt": "open field on white background"
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "title": "Family",
+      "difficulty": "beginner",
+      "maxQuestionsPerSession": 30,
+      "items": [
+        {
+          "id": "fa_01",
+          "word_nl": "familie",
+          "word_en": "family",
+          "image_prompt": "happy family illustration on white background"
+        },
+        {
+          "id": "fa_02",
+          "word_nl": "vader",
+          "word_en": "father",
+          "image_prompt": "adult father man on white background"
+        },
+        {
+          "id": "fa_03",
+          "word_nl": "moeder",
+          "word_en": "mother",
+          "image_prompt": "adult mother woman on white background"
+        },
+        {
+          "id": "fa_04",
+          "word_nl": "ouders",
+          "word_en": "parents",
+          "image_prompt": "mother and father together on white background"
+        },
+        {
+          "id": "fa_05",
+          "word_nl": "zoon",
+          "word_en": "son",
+          "image_prompt": "young boy child on white background"
+        },
+        {
+          "id": "fa_06",
+          "word_nl": "dochter",
+          "word_en": "daughter",
+          "image_prompt": "young girl child on white background"
+        },
+        {
+          "id": "fa_07",
+          "word_nl": "kind",
+          "word_en": "child",
+          "image_prompt": "single child on white background"
+        },
+        {
+          "id": "fa_08",
+          "word_nl": "kinderen",
+          "word_en": "children",
+          "image_prompt": "two children together on white background"
+        },
+        {
+          "id": "fa_09",
+          "word_nl": "broer",
+          "word_en": "brother",
+          "image_prompt": "adult brother man on white background"
+        },
+        {
+          "id": "fa_10",
+          "word_nl": "zus",
+          "word_en": "sister",
+          "image_prompt": "adult sister woman on white background"
+        },
+        {
+          "id": "fa_11",
+          "word_nl": "opa",
+          "word_en": "grandfather",
+          "image_prompt": "elderly grandfather man on white background"
+        },
+        {
+          "id": "fa_12",
+          "word_nl": "oma",
+          "word_en": "grandmother",
+          "image_prompt": "elderly grandmother woman on white background"
+        },
+        {
+          "id": "fa_13",
+          "word_nl": "grootouders",
+          "word_en": "grandparents",
+          "image_prompt": "grandmother and grandfather together on white background"
+        },
+        {
+          "id": "fa_14",
+          "word_nl": "kleinzoon",
+          "word_en": "grandson",
+          "image_prompt": "young grandson boy on white background"
+        },
+        {
+          "id": "fa_15",
+          "word_nl": "kleindochter",
+          "word_en": "granddaughter",
+          "image_prompt": "young granddaughter girl on white background"
+        },
+        {
+          "id": "fa_16",
+          "word_nl": "oom",
+          "word_en": "uncle",
+          "image_prompt": "adult uncle man on white background"
+        },
+        {
+          "id": "fa_17",
+          "word_nl": "tante",
+          "word_en": "aunt",
+          "image_prompt": "adult aunt woman on white background"
+        },
+        {
+          "id": "fa_18",
+          "word_nl": "neef",
+          "word_en": "nephew / cousin (male)",
+          "image_prompt": "young male cousin on white background"
+        },
+        {
+          "id": "fa_19",
+          "word_nl": "nicht",
+          "word_en": "niece / cousin (female)",
+          "image_prompt": "young female cousin on white background"
+        },
+        {
+          "id": "fa_20",
+          "word_nl": "familielid",
+          "word_en": "family member",
+          "image_prompt": "single family member person on white background"
+        },
+        {
+          "id": "fa_21",
+          "word_nl": "man",
+          "word_en": "husband",
+          "image_prompt": "adult husband man on white background"
+        },
+        {
+          "id": "fa_22",
+          "word_nl": "vrouw",
+          "word_en": "wife",
+          "image_prompt": "adult wife woman on white background"
+        },
+        {
+          "id": "fa_23",
+          "word_nl": "echtgenoot",
+          "word_en": "spouse (male)",
+          "image_prompt": "married man on white background"
+        },
+        {
+          "id": "fa_24",
+          "word_nl": "echtgenote",
+          "word_en": "spouse (female)",
+          "image_prompt": "married woman on white background"
+        },
+        {
+          "id": "fa_25",
+          "word_nl": "stel",
+          "word_en": "couple",
+          "image_prompt": "adult couple together on white background"
+        },
+        {
+          "id": "fa_26",
+          "word_nl": "baby",
+          "word_en": "baby",
+          "image_prompt": "baby on white background"
+        },
+        {
+          "id": "fa_27",
+          "word_nl": "tiener",
+          "word_en": "teenager",
+          "image_prompt": "teenager person on white background"
+        },
+        {
+          "id": "fa_28",
+          "word_nl": "volwassene",
+          "word_en": "adult",
+          "image_prompt": "adult person on white background"
+        },
+        {
+          "id": "fa_29",
+          "word_nl": "oudere",
+          "word_en": "elderly person",
+          "image_prompt": "elderly person on white background"
+        },
+        {
+          "id": "fa_30",
+          "word_nl": "gezin",
+          "word_en": "household",
+          "image_prompt": "family household together on white background"
+        },
+        {
+          "id": "fa_31",
+          "word_nl": "stiefvader",
+          "word_en": "stepfather",
+          "image_prompt": "stepfather man on white background"
+        },
+        {
+          "id": "fa_32",
+          "word_nl": "stiefmoeder",
+          "word_en": "stepmother",
+          "image_prompt": "stepmother woman on white background"
+        },
+        {
+          "id": "fa_33",
+          "word_nl": "stiefzoon",
+          "word_en": "stepson",
+          "image_prompt": "stepson boy on white background"
+        },
+        {
+          "id": "fa_34",
+          "word_nl": "stiefdochter",
+          "word_en": "stepdaughter",
+          "image_prompt": "stepdaughter girl on white background"
+        },
+        {
+          "id": "fa_35",
+          "word_nl": "halfbroer",
+          "word_en": "half-brother",
+          "image_prompt": "half brother man on white background"
+        },
+        {
+          "id": "fa_36",
+          "word_nl": "halfzus",
+          "word_en": "half-sister",
+          "image_prompt": "half sister woman on white background"
+        },
+        {
+          "id": "fa_37",
+          "word_nl": "schoonvader",
+          "word_en": "father-in-law",
+          "image_prompt": "father in law man on white background"
+        },
+        {
+          "id": "fa_38",
+          "word_nl": "schoonmoeder",
+          "word_en": "mother-in-law",
+          "image_prompt": "mother in law woman on white background"
+        },
+        {
+          "id": "fa_39",
+          "word_nl": "schoonzoon",
+          "word_en": "son-in-law",
+          "image_prompt": "son in law man on white background"
+        },
+        {
+          "id": "fa_40",
+          "word_nl": "schoondochter",
+          "word_en": "daughter-in-law",
+          "image_prompt": "daughter in law woman on white background"
+        },
+        {
+          "id": "fa_41",
+          "word_nl": "tweeling",
+          "word_en": "twins",
+          "image_prompt": "twin children on white background"
+        },
+        {
+          "id": "fa_42",
+          "word_nl": "broers",
+          "word_en": "brothers",
+          "image_prompt": "two brothers together on white background"
+        },
+        {
+          "id": "fa_43",
+          "word_nl": "zussen",
+          "word_en": "sisters",
+          "image_prompt": "two sisters together on white background"
+        },
+        {
+          "id": "fa_44",
+          "word_nl": "neven",
+          "word_en": "cousins (male)",
+          "image_prompt": "male cousins together on white background"
+        },
+        {
+          "id": "fa_45",
+          "word_nl": "nichten",
+          "word_en": "cousins (female)",
+          "image_prompt": "female cousins together on white background"
+        },
+        {
+          "id": "fa_46",
+          "word_nl": "alleenstaande ouder",
+          "word_en": "single parent",
+          "image_prompt": "single parent with child on white background"
+        },
+        {
+          "id": "fa_47",
+          "word_nl": "pleegouder",
+          "word_en": "foster parent",
+          "image_prompt": "foster parent adult on white background"
+        },
+        {
+          "id": "fa_48",
+          "word_nl": "pleegkind",
+          "word_en": "foster child",
+          "image_prompt": "foster child on white background"
+        },
+        {
+          "id": "fa_49",
+          "word_nl": "familienaam",
+          "word_en": "family name",
+          "image_prompt": "family name text icon on white background"
+        },
+        {
+          "id": "fa_50",
+          "word_nl": "voornaam",
+          "word_en": "first name",
+          "image_prompt": "first name text icon on white background"
+        }
+      ]
+    },
+    {
+      "id": "jobs",
+      "title": "Jobs",
+      "difficulty": "beginner",
+      "maxQuestionsPerSession": 30,
+      "items": [
+        {
+          "id": "jo_01",
+          "word_nl": "werk",
+          "word_en": "work",
+          "image_prompt": "person working at desk on white background"
+        },
+        {
+          "id": "jo_02",
+          "word_nl": "baan",
+          "word_en": "job",
+          "image_prompt": "person at workplace on white background"
+        },
+        {
+          "id": "jo_03",
+          "word_nl": "kantoor",
+          "word_en": "office",
+          "image_prompt": "office workspace on white background"
+        },
+        {
+          "id": "jo_04",
+          "word_nl": "werker",
+          "word_en": "worker",
+          "image_prompt": "worker wearing uniform on white background"
+        },
+        {
+          "id": "jo_05",
+          "word_nl": "medewerker",
+          "word_en": "employee",
+          "image_prompt": "employee person on white background"
+        },
+        {
+          "id": "jo_06",
+          "word_nl": "manager",
+          "word_en": "manager",
+          "image_prompt": "manager in business clothing on white background"
+        },
+        {
+          "id": "jo_07",
+          "word_nl": "directeur",
+          "word_en": "director",
+          "image_prompt": "company director on white background"
+        },
+        {
+          "id": "jo_08",
+          "word_nl": "baas",
+          "word_en": "boss",
+          "image_prompt": "boss supervising work on white background"
+        },
+        {
+          "id": "jo_09",
+          "word_nl": "collega",
+          "word_en": "colleague",
+          "image_prompt": "two colleagues together on white background"
+        },
+        {
+          "id": "jo_10",
+          "word_nl": "team",
+          "word_en": "team",
+          "image_prompt": "work team together on white background"
+        },
+        {
+          "id": "jo_11",
+          "word_nl": "leraar",
+          "word_en": "teacher",
+          "image_prompt": "teacher standing near board on white background"
+        },
+        {
+          "id": "jo_12",
+          "word_nl": "student",
+          "word_en": "student",
+          "image_prompt": "student with books on white background"
+        },
+        {
+          "id": "jo_13",
+          "word_nl": "dokter",
+          "word_en": "doctor",
+          "image_prompt": "doctor wearing white coat on white background"
+        },
+        {
+          "id": "jo_14",
+          "word_nl": "verpleegkundige",
+          "word_en": "nurse",
+          "image_prompt": "nurse in uniform on white background"
+        },
+        {
+          "id": "jo_15",
+          "word_nl": "tandarts",
+          "word_en": "dentist",
+          "image_prompt": "dentist in clinic uniform on white background"
+        },
+        {
+          "id": "jo_16",
+          "word_nl": "apotheker",
+          "word_en": "pharmacist",
+          "image_prompt": "pharmacist at counter on white background"
+        },
+        {
+          "id": "jo_17",
+          "word_nl": "chauffeur",
+          "word_en": "driver",
+          "image_prompt": "driver sitting in vehicle on white background"
+        },
+        {
+          "id": "jo_18",
+          "word_nl": "buschauffeur",
+          "word_en": "bus driver",
+          "image_prompt": "bus driver in uniform on white background"
+        },
+        {
+          "id": "jo_19",
+          "word_nl": "taxichauffeur",
+          "word_en": "taxi driver",
+          "image_prompt": "taxi driver on white background"
+        },
+        {
+          "id": "jo_20",
+          "word_nl": "piloot",
+          "word_en": "pilot",
+          "image_prompt": "airplane pilot in uniform on white background"
+        },
+        {
+          "id": "jo_21",
+          "word_nl": "monteur",
+          "word_en": "mechanic",
+          "image_prompt": "mechanic with tools on white background"
+        },
+        {
+          "id": "jo_22",
+          "word_nl": "elektricien",
+          "word_en": "electrician",
+          "image_prompt": "electrician wearing helmet on white background"
+        },
+        {
+          "id": "jo_23",
+          "word_nl": "loodgieter",
+          "word_en": "plumber",
+          "image_prompt": "plumber holding wrench on white background"
+        },
+        {
+          "id": "jo_24",
+          "word_nl": "schilder",
+          "word_en": "painter",
+          "image_prompt": "house painter with roller on white background"
+        },
+        {
+          "id": "jo_25",
+          "word_nl": "timmerman",
+          "word_en": "carpenter",
+          "image_prompt": "carpenter with wood tools on white background"
+        },
+        {
+          "id": "jo_26",
+          "word_nl": "bouwer",
+          "word_en": "builder",
+          "image_prompt": "construction worker on white background"
+        },
+        {
+          "id": "jo_27",
+          "word_nl": "arbeider",
+          "word_en": "laborer",
+          "image_prompt": "manual labor worker on white background"
+        },
+        {
+          "id": "jo_28",
+          "word_nl": "schoonmaker",
+          "word_en": "cleaner",
+          "image_prompt": "cleaner with cleaning tools on white background"
+        },
+        {
+          "id": "jo_29",
+          "word_nl": "beveiliger",
+          "word_en": "security guard",
+          "image_prompt": "security guard in uniform on white background"
+        },
+        {
+          "id": "jo_30",
+          "word_nl": "politieagent",
+          "word_en": "police officer",
+          "image_prompt": "police officer in uniform on white background"
+        },
+        {
+          "id": "jo_31",
+          "word_nl": "brandweerman",
+          "word_en": "firefighter",
+          "image_prompt": "firefighter in uniform on white background"
+        },
+        {
+          "id": "jo_32",
+          "word_nl": "soldaat",
+          "word_en": "soldier",
+          "image_prompt": "soldier in uniform on white background"
+        },
+        {
+          "id": "jo_33",
+          "word_nl": "kok",
+          "word_en": "cook",
+          "image_prompt": "cook wearing chef hat on white background"
+        },
+        {
+          "id": "jo_34",
+          "word_nl": "chef",
+          "word_en": "chef",
+          "image_prompt": "professional chef on white background"
+        },
+        {
+          "id": "jo_35",
+          "word_nl": "ober",
+          "word_en": "waiter",
+          "image_prompt": "waiter holding tray on white background"
+        },
+        {
+          "id": "jo_36",
+          "word_nl": "serveerster",
+          "word_en": "waitress",
+          "image_prompt": "waitress holding tray on white background"
+        },
+        {
+          "id": "jo_37",
+          "word_nl": "verkoper",
+          "word_en": "salesperson",
+          "image_prompt": "salesperson in shop on white background"
+        },
+        {
+          "id": "jo_38",
+          "word_nl": "kassamedewerker",
+          "word_en": "cashier",
+          "image_prompt": "cashier at register on white background"
+        },
+        {
+          "id": "jo_39",
+          "word_nl": "winkelier",
+          "word_en": "shop owner",
+          "image_prompt": "shop owner standing in store on white background"
+        },
+        {
+          "id": "jo_40",
+          "word_nl": "boer",
+          "word_en": "farmer",
+          "image_prompt": "farmer wearing hat on white background"
+        },
+        {
+          "id": "jo_41",
+          "word_nl": "tuinman",
+          "word_en": "gardener",
+          "image_prompt": "gardener with plants on white background"
+        },
+        {
+          "id": "jo_42",
+          "word_nl": "dierenarts",
+          "word_en": "veterinarian",
+          "image_prompt": "veterinarian with pet on white background"
+        },
+        {
+          "id": "jo_43",
+          "word_nl": "verzorger",
+          "word_en": "caretaker",
+          "image_prompt": "caretaker assisting person on white background"
+        },
+        {
+          "id": "jo_44",
+          "word_nl": "opzichter",
+          "word_en": "supervisor",
+          "image_prompt": "supervisor with clipboard on white background"
+        },
+        {
+          "id": "jo_45",
+          "word_nl": "planner",
+          "word_en": "planner",
+          "image_prompt": "planner working at desk on white background"
+        },
+        {
+          "id": "jo_46",
+          "word_nl": "administratie",
+          "word_en": "administration",
+          "image_prompt": "administrative worker at desk on white background"
+        },
+        {
+          "id": "jo_47",
+          "word_nl": "receptionist",
+          "word_en": "receptionist",
+          "image_prompt": "receptionist at front desk on white background"
+        },
+        {
+          "id": "jo_48",
+          "word_nl": "koerier",
+          "word_en": "courier",
+          "image_prompt": "delivery courier with package on white background"
+        },
+        {
+          "id": "jo_49",
+          "word_nl": "bezorger",
+          "word_en": "delivery driver",
+          "image_prompt": "delivery driver with box on white background"
+        },
+        {
+          "id": "jo_50",
+          "word_nl": "vrijwilliger",
+          "word_en": "volunteer",
+          "image_prompt": "volunteer helping people on white background"
+        }
+      ]
+    }
+  ]
+}
