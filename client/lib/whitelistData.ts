@@ -54,16 +54,7 @@ const SECTION_ICONS: Record<string, string> = {
 };
 
 function generateImageUrlFromPrompt(imagePrompt: string, englishWord: string): string {
-  const keyword = englishWord
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "")
-    .trim();
-  
-  if (!keyword) {
-    return "";
-  }
-  
-  return `https://loremflickr.com/400/400/${encodeURIComponent(keyword)}?lock=${keyword.charCodeAt(0)}`;
+  return "";
 }
 
 function convertWhitelistItem(item: WhitelistItem): VocabItem {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, StyleSheet, Image, ActivityIndicator } from "react-native";
+import { View, StyleSheet, ActivityIndicator } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -32,7 +32,6 @@ export default function QuizScreen() {
   const [correctCount, setCorrectCount] = useState(0);
   const [showXP, setShowXP] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [imageLoading, setImageLoading] = useState(true);
 
   useEffect(() => {
     const section = getSectionById(sectionId);
@@ -66,11 +65,9 @@ export default function QuizScreen() {
 
     setTimeout(() => {
       if (currentIndex < questions.length - 1) {
-        const nextQuestion = questions[currentIndex + 1];
         setCurrentIndex((prev) => prev + 1);
         setSelectedAnswer(null);
         setIsCorrect(null);
-        setImageLoading(nextQuestion?.imageUrl ? true : false);
       } else {
         const xpGained = (correctCount + (correct ? 1 : 0)) * XP_PER_CORRECT;
         storage.completeSection(sectionId, (correctCount + (correct ? 1 : 0)) / questions.length);
@@ -121,36 +118,15 @@ export default function QuizScreen() {
         />
       </View>
 
-      <View style={styles.imageContainer}>
-        {imageLoading && currentQuestion.imageUrl ? (
-          <View style={styles.imagePlaceholder}>
-            <ActivityIndicator size="large" color={AppColors.primary} />
-          </View>
-        ) : null}
-        {!currentQuestion.imageUrl ? (
-          <View style={styles.imagePlaceholder}>
-            <ThemedText type="small" style={styles.placeholderText}>
-              Image loading...
-            </ThemedText>
-          </View>
-        ) : (
-          <Image
-            source={{ uri: currentQuestion.imageUrl }}
-            style={[styles.image, imageLoading && styles.imageHidden]}
-            resizeMode="cover"
-            onLoad={() => setImageLoading(false)}
-            onError={() => setImageLoading(false)}
-          />
-        )}
-      </View>
-
       <View style={styles.questionContainer}>
-        <ThemedText type="small" style={styles.questionLabel}>
-          What is the Dutch word for:
-        </ThemedText>
-        <ThemedText type="h2" style={styles.questionWord}>
-          {currentQuestion.english}
-        </ThemedText>
+        <View style={styles.wordCard}>
+          <ThemedText type="small" style={styles.questionLabel}>
+            What is the Dutch word for:
+          </ThemedText>
+          <ThemedText type="h1" style={styles.questionWord}>
+            {currentQuestion.english}
+          </ThemedText>
+        </View>
       </View>
 
       <View style={styles.answersContainer}>
@@ -196,44 +172,29 @@ const styles = StyleSheet.create({
     color: AppColors.primary,
     fontWeight: "600",
   },
-  imageContainer: {
-    height: 200,
-    borderRadius: BorderRadius.md,
-    overflow: "hidden",
-    backgroundColor: AppColors.white,
-    marginBottom: Spacing.xl,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
-  },
-  imagePlaceholder: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: AppColors.grayLight,
-  },
-  placeholderText: {
-    color: AppColors.gray,
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-  },
-  imageHidden: {
-    opacity: 0,
-  },
   questionContainer: {
     marginBottom: Spacing.xl,
     alignItems: "center",
   },
+  wordCard: {
+    backgroundColor: AppColors.white,
+    borderRadius: BorderRadius.lg,
+    padding: Spacing.xl,
+    paddingVertical: Spacing["2xl"],
+    width: "100%",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    elevation: 3,
+  },
   questionLabel: {
     color: AppColors.gray,
-    marginBottom: Spacing.xs,
+    marginBottom: Spacing.md,
   },
   questionWord: {
-    color: AppColors.textDark,
+    color: AppColors.primary,
     textAlign: "center",
     fontWeight: "700",
   },
