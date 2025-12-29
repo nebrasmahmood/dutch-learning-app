@@ -1,5 +1,6 @@
 export {
   SECTIONS,
+  BADGES,
   getSectionById,
   generateQuizQuestions,
   validateVocabItem,
@@ -11,4 +12,5 @@ export type {
   VocabItem,
   Section,
   QuizQuestion,
+  Badge,
 } from "./whitelistData";

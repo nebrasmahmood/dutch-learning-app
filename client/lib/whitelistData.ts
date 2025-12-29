@@ -4,6 +4,7 @@ export interface WhitelistItem {
   id: string;
   word_nl: string;
   word_en: string;
+  word_ar: string;
   image_prompt: string;
 }
 
@@ -19,6 +20,7 @@ export interface VocabItem {
   id: string;
   dutch: string;
   english: string;
+  arabic: string;
   imageUrl: string;
   imagePrompt: string;
 }
@@ -37,6 +39,7 @@ export interface QuizQuestion {
   options: string[];
   dutch: string;
   english: string;
+  arabic: string;
 }
 
 const SECTION_ICONS: Record<string, string> = {
@@ -62,6 +65,7 @@ function convertWhitelistItem(item: WhitelistItem): VocabItem {
     id: item.id,
     dutch: item.word_nl,
     english: item.word_en,
+    arabic: item.word_ar || item.word_en,
     imageUrl: generateImageUrlFromPrompt(item.image_prompt, item.word_en),
     imagePrompt: item.image_prompt,
   };
@@ -127,6 +131,7 @@ export function generateQuizQuestions(section: Section, count: number = QUESTION
       options,
       dutch: item.dutch,
       english: item.english,
+      arabic: item.arabic,
     };
   });
 }
@@ -157,3 +162,37 @@ export function getSectionStats() {
     itemCount: section.items.length,
   }));
 }
+
+export interface Badge {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+}
+
+export const BADGES: Badge[] = [
+  {
+    id: "first_section",
+    name: "First Steps",
+    description: "Complete your first section",
+    icon: "star",
+  },
+  {
+    id: "exam_passed",
+    name: "Exam Master",
+    description: "Pass the final exam",
+    icon: "award",
+  },
+  {
+    id: "level_5",
+    name: "Rising Star",
+    description: "Reach level 5",
+    icon: "trending-up",
+  },
+  {
+    id: "perfect_score",
+    name: "Perfectionist",
+    description: "Get a perfect score on any section",
+    icon: "check-circle",
+  },
+];

@@ -12,6 +12,7 @@ import { XPIndicator } from "@/components/XPIndicator";
 import { AppColors, Spacing, BorderRadius } from "@/constants/theme";
 import { getSectionById, generateQuizQuestions, QuizQuestion } from "@/lib/mockData";
 import { storage } from "@/lib/storage";
+import { useLanguage } from "@/lib/LanguageContext";
 import type { RootStackParamList } from "@/navigation/RootStackNavigator";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -24,6 +25,7 @@ export default function QuizScreen() {
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute<RouteType>();
   const { sectionId } = route.params;
+  const { language, t, isRTL } = useLanguage();
 
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,6 +34,10 @@ export default function QuizScreen() {
   const [correctCount, setCorrectCount] = useState(0);
   const [showXP, setShowXP] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const getSourceWord = (question: QuizQuestion) => {
+    return language === "ar" ? question.arabic : question.english;
+  };
 
   useEffect(() => {
     const section = getSectionById(sectionId);
@@ -104,11 +110,11 @@ export default function QuizScreen() {
     <View style={[styles.container, { paddingBottom: insets.bottom + Spacing.xl }]}>
       <View style={styles.progressContainer}>
         <View style={styles.progressHeader}>
-          <ThemedText type="small" style={styles.progressText}>
-            Question {currentIndex + 1} of {questions.length}
+          <ThemedText type="small" style={[styles.progressText, isRTL && styles.rtlText]}>
+            {t("quiz.questionOf", { current: currentIndex + 1, total: questions.length })}
           </ThemedText>
-          <ThemedText type="small" style={styles.scoreText}>
-            Score: {correctCount}/{currentIndex + (selectedAnswer ? 1 : 0)}
+          <ThemedText type="small" style={[styles.scoreText, isRTL && styles.rtlText]}>
+            {t("quiz.score")}: {correctCount}/{currentIndex + (selectedAnswer ? 1 : 0)}
           </ThemedText>
         </View>
         <ProgressBar
@@ -120,11 +126,11 @@ export default function QuizScreen() {
 
       <View style={styles.questionContainer}>
         <View style={styles.wordCard}>
-          <ThemedText type="small" style={styles.questionLabel}>
-            What is the Dutch word for:
+          <ThemedText type="small" style={[styles.questionLabel, isRTL && styles.rtlText]}>
+            {t("quiz.question")}
           </ThemedText>
-          <ThemedText type="h1" style={styles.questionWord}>
-            {currentQuestion.english}
+          <ThemedText type="h1" style={[styles.questionWord, isRTL && styles.rtlText]}>
+            {getSourceWord(currentQuestion)}
           </ThemedText>
         </View>
       </View>
@@ -200,5 +206,9 @@ const styles = StyleSheet.create({
   },
   answersContainer: {
     flex: 1,
+  },
+  rtlText: {
+    textAlign: "right",
+    writingDirection: "rtl",
   },
 });

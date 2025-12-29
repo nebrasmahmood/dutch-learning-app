@@ -12,6 +12,7 @@ import { ProgressBar } from "@/components/ProgressBar";
 import { AppColors, Spacing, BorderRadius } from "@/constants/theme";
 import { storage, UserData, ProgressData } from "@/lib/storage";
 import { SECTIONS, BADGES } from "@/lib/mockData";
+import { useLanguage, AppLanguage } from "@/lib/LanguageContext";
 import type { RootStackParamList } from "@/navigation/RootStackNavigator";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -19,8 +20,14 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
+  const { language, setLanguage, t, isRTL } = useLanguage();
   const [user, setUser] = useState<UserData | null>(null);
   const [progress, setProgress] = useState<ProgressData | null>(null);
+
+  const handleLanguageToggle = (lang: AppLanguage) => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setLanguage(lang);
+  };
 
   useFocusEffect(
     useCallback(() => {
@@ -37,12 +44,12 @@ export default function ProfileScreen() {
 
   const handleLogout = () => {
     Alert.alert(
-      "Logout",
-      "Are you sure you want to logout? Your progress will be saved.",
+      t("profile.logout"),
+      t("profile.logoutConfirm"),
       [
-        { text: "Cancel", style: "cancel" },
+        { text: t("profile.cancel"), style: "cancel" },
         {
-          text: "Logout",
+          text: t("profile.logout"),
           style: "destructive",
           onPress: async () => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -99,8 +106,8 @@ export default function ProfileScreen() {
         <ThemedText type="h3" style={styles.email}>
           {user?.email || "User"}
         </ThemedText>
-        <ThemedText type="small" style={styles.joinDate}>
-          Member since {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : "today"}
+        <ThemedText type="small" style={[styles.joinDate, isRTL && styles.rtlText]}>
+          {t("profile.memberSince", { date: user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : "today" })}
         </ThemedText>
       </View>
 
@@ -111,8 +118,8 @@ export default function ProfileScreen() {
             <ThemedText type="h2" style={styles.statValue}>
               {user?.level || 1}
             </ThemedText>
-            <ThemedText type="small" style={styles.statLabel}>
-              Level
+            <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>
+              {t("profile.level")}
             </ThemedText>
           </View>
           <View style={styles.statDivider} />
@@ -121,8 +128,8 @@ export default function ProfileScreen() {
             <ThemedText type="h2" style={styles.statValue}>
               {user?.totalXP || 0}
             </ThemedText>
-            <ThemedText type="small" style={styles.statLabel}>
-              Total XP
+            <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>
+              {t("profile.totalXP")}
             </ThemedText>
           </View>
           <View style={styles.statDivider} />
@@ -131,19 +138,19 @@ export default function ProfileScreen() {
             <ThemedText type="h2" style={styles.statValue}>
               {progress?.completedSections.length || 0}
             </ThemedText>
-            <ThemedText type="small" style={styles.statLabel}>
-              Sections
+            <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>
+              {t("profile.sections")}
             </ThemedText>
           </View>
         </View>
 
         <View style={styles.progressSection}>
           <View style={styles.progressHeader}>
-            <ThemedText type="body" style={styles.progressTitle}>
-              Progress to Level {(user?.level || 1) + 1}
+            <ThemedText type="body" style={[styles.progressTitle, isRTL && styles.rtlText]}>
+              {t("profile.progressToLevel", { level: (user?.level || 1) + 1 })}
             </ThemedText>
-            <ThemedText type="small" style={styles.progressXP}>
-              {xpToNextLevel} XP remaining
+            <ThemedText type="small" style={[styles.progressXP, isRTL && styles.rtlText]}>
+              {t("profile.xpRemaining", { xp: xpToNextLevel })}
             </ThemedText>
           </View>
           <ProgressBar
@@ -155,8 +162,8 @@ export default function ProfileScreen() {
       </View>
 
       <View style={styles.section}>
-        <ThemedText type="h4" style={styles.sectionTitle}>
-          Badges
+        <ThemedText type="h4" style={[styles.sectionTitle, isRTL && styles.rtlText]}>
+          {t("profile.badges")}
         </ThemedText>
         <View style={styles.badgesGrid}>
           {BADGES.map((badge) => {
@@ -194,8 +201,8 @@ export default function ProfileScreen() {
       </View>
 
       <View style={styles.section}>
-        <ThemedText type="h4" style={styles.sectionTitle}>
-          Section Progress
+        <ThemedText type="h4" style={[styles.sectionTitle, isRTL && styles.rtlText]}>
+          {t("profile.sectionsCompleted")}
         </ThemedText>
         {SECTIONS.map((section) => {
           const sectionProgress = progress?.sectionProgress[section.id];
@@ -224,8 +231,50 @@ export default function ProfileScreen() {
         })}
       </View>
 
+      <View style={styles.section}>
+        <ThemedText type="h4" style={styles.sectionTitle}>
+          {t("settings.language")}
+        </ThemedText>
+        <View style={styles.languageToggle}>
+          <Pressable
+            style={[
+              styles.languageOption,
+              language === "en" && styles.languageOptionActive,
+            ]}
+            onPress={() => handleLanguageToggle("en")}
+          >
+            <ThemedText
+              type="body"
+              style={[
+                styles.languageText,
+                language === "en" && styles.languageTextActive,
+              ]}
+            >
+              {t("settings.english")}
+            </ThemedText>
+          </Pressable>
+          <Pressable
+            style={[
+              styles.languageOption,
+              language === "ar" && styles.languageOptionActive,
+            ]}
+            onPress={() => handleLanguageToggle("ar")}
+          >
+            <ThemedText
+              type="body"
+              style={[
+                styles.languageText,
+                language === "ar" && styles.languageTextActive,
+              ]}
+            >
+              {t("settings.arabic")}
+            </ThemedText>
+          </Pressable>
+        </View>
+      </View>
+
       <Button onPress={handleLogout} style={styles.logoutButton}>
-        Logout
+        {t("profile.logout")}
       </Button>
     </ScrollView>
   );
@@ -372,5 +421,37 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.error,
     borderRadius: BorderRadius.md,
     marginTop: Spacing.lg,
+  },
+  languageToggle: {
+    flexDirection: "row",
+    backgroundColor: AppColors.white,
+    borderRadius: BorderRadius.md,
+    padding: Spacing.xs,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  languageOption: {
+    flex: 1,
+    paddingVertical: Spacing.md,
+    paddingHorizontal: Spacing.lg,
+    borderRadius: BorderRadius.sm,
+    alignItems: "center",
+  },
+  languageOptionActive: {
+    backgroundColor: AppColors.primary,
+  },
+  languageText: {
+    color: AppColors.textDark,
+    fontWeight: "500",
+  },
+  languageTextActive: {
+    color: AppColors.white,
+  },
+  rtlText: {
+    textAlign: "right",
+    writingDirection: "rtl",
   },
 });
