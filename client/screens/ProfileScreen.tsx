@@ -20,7 +20,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
-  const { language, setLanguage, t, isRTL } = useLanguage();
+  const { language, setLanguage, resetLanguageChoice, t, isRTL } = useLanguage();
   const [user, setUser] = useState<UserData | null>(null);
   const [progress, setProgress] = useState<ProgressData | null>(null);
 
@@ -273,6 +273,22 @@ export default function ProfileScreen() {
         </View>
       </View>
 
+      <Button 
+        onPress={async () => {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          await resetLanguageChoice();
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 0,
+              routes: [{ name: "LanguageSelection" }],
+            })
+          );
+        }} 
+        style={styles.changeLanguageButton}
+      >
+        {t("profile.changeLanguage")}
+      </Button>
+
       <Button onPress={handleLogout} style={styles.logoutButton}>
         {t("profile.logout")}
       </Button>
@@ -417,10 +433,15 @@ const styles = StyleSheet.create({
     color: AppColors.primary,
     fontWeight: "600",
   },
+  changeLanguageButton: {
+    backgroundColor: AppColors.primary,
+    borderRadius: BorderRadius.md,
+    marginTop: Spacing.lg,
+  },
   logoutButton: {
     backgroundColor: AppColors.error,
     borderRadius: BorderRadius.md,
-    marginTop: Spacing.lg,
+    marginTop: Spacing.md,
   },
   languageToggle: {
     flexDirection: "row",

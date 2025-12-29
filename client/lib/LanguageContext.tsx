@@ -6,6 +6,7 @@ export type AppLanguage = "en" | "ar";
 interface LanguageContextType {
   language: AppLanguage;
   setLanguage: (lang: AppLanguage) => void;
+  resetLanguageChoice: () => Promise<void>;
   t: (key: string, params?: Record<string, string | number>) => string;
   isRTL: boolean;
   hasLanguageBeenSet: boolean;
@@ -70,6 +71,7 @@ const translations: Record<AppLanguage, Record<string, string>> = {
     "profile.logout": "Logout",
     "profile.logoutConfirm": "Are you sure you want to logout? Your progress will be saved.",
     "profile.cancel": "Cancel",
+    "profile.changeLanguage": "Change Language",
     "settings.language": "App Language",
     "settings.english": "English",
     "settings.arabic": "العربية",
@@ -145,6 +147,7 @@ const translations: Record<AppLanguage, Record<string, string>> = {
     "profile.logout": "تسجيل الخروج",
     "profile.logoutConfirm": "هل أنت متأكد أنك تريد تسجيل الخروج؟ سيتم حفظ تقدمك.",
     "profile.cancel": "إلغاء",
+    "profile.changeLanguage": "تغيير اللغة",
     "settings.language": "لغة التطبيق",
     "settings.english": "English",
     "settings.arabic": "العربية",
@@ -190,6 +193,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     AsyncStorage.setItem(LANGUAGE_KEY, lang);
   };
 
+  const resetLanguageChoice = async () => {
+    await AsyncStorage.removeItem(LANGUAGE_KEY);
+    setHasLanguageBeenSet(false);
+  };
+
   const t = (key: string, params?: Record<string, string | number>) => {
     let text = translations[language][key] || key;
     if (params) {
@@ -203,7 +211,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const isRTL = language === "ar";
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, isRTL, hasLanguageBeenSet, isLoading }}>
+    <LanguageContext.Provider value={{ language, setLanguage, resetLanguageChoice, t, isRTL, hasLanguageBeenSet, isLoading }}>
       {children}
     </LanguageContext.Provider>
   );
