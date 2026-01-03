@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { StyleSheet, Pressable } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Animated, {
@@ -10,6 +10,7 @@ import Animated, {
   runOnJS,
 } from "react-native-reanimated";
 import * as Haptics from "expo-haptics";
+import * as Speech from "expo-speech";
 import { ThemedText } from "@/components/ThemedText";
 import { AppColors, BorderRadius, Spacing } from "@/constants/theme";
 
@@ -69,6 +70,19 @@ export function AnswerButton({
     scale.value = withSpring(1, springConfig);
   };
 
+  const speakDutch = useCallback(async () => {
+    await Speech.stop();
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    Speech.speak(text, {
+      language: "nl-NL",
+      rate: 0.9,
+    });
+  }, [text]);
+
+  const handleLongPress = () => {
+    speakDutch();
+  };
+
   const getBackgroundColor = () => {
     switch (state) {
       case "correct":
@@ -108,9 +122,10 @@ export function AnswerButton({
   return (
     <AnimatedPressable
       onPress={state === "default" ? onPress : undefined}
+      onLongPress={handleLongPress}
+      delayLongPress={400}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
-      disabled={state !== "default"}
       style={[
         styles.button,
         {
