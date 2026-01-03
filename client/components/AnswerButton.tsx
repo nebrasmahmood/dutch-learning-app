@@ -73,9 +73,21 @@ export function AnswerButton({
   const speakDutch = useCallback(async () => {
     await Speech.stop();
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    
+    const voices = await Speech.getAvailableVoicesAsync();
+    const dutchVoices = voices.filter(
+      (v) => v.language.startsWith("nl") || v.language === "nl-NL"
+    );
+    const premiumVoice = dutchVoices.find(
+      (v) => v.quality === "Enhanced" || v.name.toLowerCase().includes("enhanced") || v.name.toLowerCase().includes("premium")
+    );
+    const selectedVoice = premiumVoice || dutchVoices[0];
+    
     Speech.speak(text, {
       language: "nl-NL",
-      rate: 0.9,
+      rate: 0.75,
+      pitch: 1.0,
+      voice: selectedVoice?.identifier,
     });
   }, [text]);
 
