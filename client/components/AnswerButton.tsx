@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from "react";
-import { StyleSheet, Pressable } from "react-native";
+import { StyleSheet, Pressable, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Animated, {
   useAnimatedStyle,
@@ -135,6 +135,20 @@ export function AnswerButton({
         animatedStyle,
       ]}
     >
+      <Pressable
+        onPress={(e) => {
+          e.stopPropagation();
+          speakDutch();
+        }}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        style={styles.speakerButton}
+      >
+        <Feather 
+          name="volume-2" 
+          size={20} 
+          color={state === "correct" || state === "incorrect" ? AppColors.white : AppColors.primary} 
+        />
+      </Pressable>
       <ThemedText
         type="body"
         style={[styles.text, { color: getTextColor() }]}
@@ -155,12 +169,21 @@ const styles = StyleSheet.create({
   button: {
     height: Spacing.buttonHeight,
     borderRadius: BorderRadius.md,
-    paddingHorizontal: Spacing.xl,
+    paddingHorizontal: Spacing.md,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     borderWidth: 2,
     marginBottom: Spacing.md,
+    gap: Spacing.sm,
+  },
+  speakerButton: {
+    width: 36,
+    height: 36,
+    borderRadius: BorderRadius.sm,
+    backgroundColor: "rgba(0,0,0,0.05)",
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
     fontWeight: "600",
