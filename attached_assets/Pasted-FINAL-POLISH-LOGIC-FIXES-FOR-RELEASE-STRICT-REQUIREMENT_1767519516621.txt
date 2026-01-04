@@ -1,0 +1,71 @@
+FINAL POLISH & LOGIC FIXES FOR RELEASE (STRICT REQUIREMENTS)
+
+Please implement the following fixes and improvements carefully.
+Do NOT change existing core logic unless explicitly stated.
+
+================================
+1) LANGUAGE CONSISTENCY (AR / EN)
+================================
+- If the user selects Arabic as the app language:
+  • ALL texts must be displayed in Arabic.
+  • This includes the "Section Complete" screen.
+- Currently, the final result screen appears in English even when Arabic is selected.
+- Fix this so the result screen fully respects the selected language.
+
+================================
+2) USER DISPLAY NAME
+================================
+- On the Profile screen:
+  • Do NOT display the Apple private relay email.
+  • Instead, display a friendly username (e.g. "User" or "Learner").
+- If no custom name exists, use a default display name.
+- Never show the email address in the UI.
+
+================================
+3) QUIZ PROGRESS PERSISTENCE (IMPORTANT)
+================================
+- User progress MUST be saved even if the user presses the "Back" button.
+- When the user returns to the same section:
+  • The quiz should resume from the saved progress.
+- Progress should only be reset if:
+  • The user manually restarts the section.
+- Do NOT reset progress automatically on back navigation.
+
+================================
+4) SECTION COMPLETION VALIDATION (UPDATED RULE)
+================================
+- Each section contains 30 questions.
+- A section should ONLY be marked as completed if:
+  • The user answers at least 15 questions correctly.
+- If the user answers fewer than 15 correct:
+  • The section must NOT be completed.
+  • The next section must remain locked.
+  • Show a failure or retry state instead of "Section Complete".
+
+(Current issue: sections are marked complete with very low scores.)
+
+================================
+5) SECTION UNLOCKING WITH XP
+================================
+- Some sections are locked.
+- If the user wants to unlock a locked section:
+  • Require spending XP points.
+  • Cost: 300 XP per locked section.
+- Deduct XP immediately upon unlocking.
+- If the user does not have enough XP:
+  • Prevent unlocking.
+  • Show a clear message to the user.
+
+================================
+GENERAL RULES
+================================
+- Do NOT introduce new features.
+- Do NOT change UI design unless required for logic fixes.
+- Do NOT break existing navigation.
+- Keep logic deterministic and predictable.
+- This is final release polishing before App Store submission.
+
+GOAL:
+Ensure correct language behavior, persistent user progress,
+fair section completion logic (15 correct answers minimum),
+and proper XP-based section unlocking.

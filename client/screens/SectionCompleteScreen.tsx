@@ -17,23 +17,33 @@ import { Button } from "@/components/Button";
 import { ThemedText } from "@/components/ThemedText";
 import { AppColors, Spacing, BorderRadius } from "@/constants/theme";
 import { getSectionById, SECTIONS } from "@/lib/mockData";
+import { useLanguage } from "@/lib/LanguageContext";
 import type { RootStackParamList } from "@/navigation/RootStackNavigator";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 type RouteType = RouteProp<RootStackParamList, "SectionComplete">;
 
+const MINIMUM_CORRECT_TO_PASS = 15;
+
 export default function SectionCompleteScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute<RouteType>();
-  const { sectionId, correctAnswers, totalQuestions, xpGained } = route.params;
+  const { correctAnswers, totalQuestions, xpGained, sectionId } = route.params;
+  const { t, isRTL } = useLanguage();
+
+  const isPassed = correctAnswers >= MINIMUM_CORRECT_TO_PASS;
 
   const trophyScale = useSharedValue(0);
   const contentOpacity = useSharedValue(0);
   const buttonOpacity = useSharedValue(0);
 
   useEffect(() => {
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    if (isPassed) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } else {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+    }
     
     trophyScale.value = withSequence(
       withSpring(1.2, { damping: 8 }),
@@ -60,6 +70,23 @@ export default function SectionCompleteScreen() {
   const nextSection = currentIndex < SECTIONS.length - 1 ? SECTIONS[currentIndex + 1] : null;
   const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100);
 
+  const getSectionName = (sectionItem: typeof SECTIONS[0]) => {
+    const nameMap: Record<string, string> = {
+      fruits: t("section.fruits"),
+      vegetables: t("section.vegetables"),
+      animals: t("section.animals"),
+      numbers: t("section.numbers"),
+      colors: t("section.colors"),
+      food_drinks: t("section.food"),
+      places: t("section.places"),
+      daily_actions: t("section.actions"),
+      family: t("section.family"),
+      jobs: t("section.jobs"),
+      transportation: t("section.transport"),
+    };
+    return nameMap[sectionItem.id] || sectionItem.name;
+  };
+
   const handleNextSection = () => {
     if (nextSection) {
       navigation.replace("Quiz", { sectionId: nextSection.id });
@@ -71,6 +98,10 @@ export default function SectionCompleteScreen() {
         })
       );
     }
+  };
+
+  const handleTryAgain = () => {
+    navigation.replace("Quiz", { sectionId });
   };
 
   const handleBackToHome = () => {
@@ -93,25 +124,35 @@ export default function SectionCompleteScreen() {
       ]}
     >
       <View style={styles.content}>
-        <Animated.View style={[styles.trophyContainer, trophyStyle]}>
-          <Feather name="award" size={80} color={AppColors.accent} />
+        <Animated.View style={[styles.trophyContainer, trophyStyle, !isPassed && styles.failedTrophy]}>
+          <Feather 
+            name={isPassed ? "award" : "x-circle"} 
+            size={80} 
+            color={isPassed ? AppColors.accent : AppColors.error} 
+          />
         </Animated.View>
 
         <Animated.View style={[styles.textContainer, contentStyle]}>
-          <ThemedText type="h2" style={styles.title}>
-            Section Complete!
+          <ThemedText type="h2" style={[styles.title, !isPassed && styles.failedTitle, isRTL && styles.rtlText]}>
+            {isPassed ? t("section.complete") : t("section.sectionFailed")}
           </ThemedText>
-          <ThemedText type="body" style={styles.sectionName}>
-            {section?.name || "Section"}
+          <ThemedText type="body" style={[styles.sectionName, isRTL && styles.rtlText]}>
+            {section ? getSectionName(section) : "Section"}
           </ThemedText>
+
+          {!isPassed ? (
+            <ThemedText type="small" style={[styles.failedMessage, isRTL && styles.rtlText]}>
+              {t("section.needMore")}
+            </ThemedText>
+          ) : null}
 
           <View style={styles.statsContainer}>
             <View style={styles.statItem}>
               <ThemedText type="h1" style={styles.statValue}>
                 {scorePercentage}%
               </ThemedText>
-              <ThemedText type="small" style={styles.statLabel}>
-                Score
+              <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>
+                {t("section.score")}
               </ThemedText>
             </View>
             <View style={styles.statDivider} />
@@ -119,8 +160,8 @@ export default function SectionCompleteScreen() {
               <ThemedText type="h1" style={styles.statValue}>
                 {correctAnswers}/{totalQuestions}
               </ThemedText>
-              <ThemedText type="small" style={styles.statLabel}>
-                Correct
+              <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>
+                {t("section.correctAnswers")}
               </ThemedText>
             </View>
             <View style={styles.statDivider} />
@@ -131,8 +172,8 @@ export default function SectionCompleteScreen() {
                   {xpGained}
                 </ThemedText>
               </View>
-              <ThemedText type="small" style={styles.statLabel}>
-                XP Earned
+              <ThemedText type="small" style={[styles.statLabel, isRTL && styles.rtlText]}>
+                {t("section.xpEarned")}
               </ThemedText>
             </View>
           </View>
@@ -140,14 +181,27 @@ export default function SectionCompleteScreen() {
       </View>
 
       <Animated.View style={[styles.buttonContainer, buttonStyle]}>
-        <Button onPress={handleNextSection} style={styles.primaryButton}>
-          {nextSection ? `Next: ${nextSection.name}` : "Back to Home"}
-        </Button>
-        {nextSection ? (
-          <Button onPress={handleBackToHome} style={styles.secondaryButton}>
-            Back to Home
-          </Button>
-        ) : null}
+        {isPassed ? (
+          <>
+            <Button onPress={handleNextSection} style={styles.primaryButton}>
+              {nextSection ? t("section.nextSection", { name: getSectionName(nextSection) }) : t("section.backToHome")}
+            </Button>
+            {nextSection ? (
+              <Button onPress={handleBackToHome} style={styles.secondaryButton}>
+                {t("section.backToHome")}
+              </Button>
+            ) : null}
+          </>
+        ) : (
+          <>
+            <Button onPress={handleTryAgain} style={styles.primaryButton}>
+              {t("section.tryAgain")}
+            </Button>
+            <Button onPress={handleBackToHome} style={styles.secondaryButton}>
+              {t("section.backToHome")}
+            </Button>
+          </>
+        )}
       </Animated.View>
     </View>
   );
@@ -178,6 +232,9 @@ const styles = StyleSheet.create({
     shadowRadius: 16,
     elevation: 8,
   },
+  failedTrophy: {
+    backgroundColor: "#FFF5F5",
+  },
   textContainer: {
     alignItems: "center",
   },
@@ -186,9 +243,18 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.sm,
     textAlign: "center",
   },
+  failedTitle: {
+    color: AppColors.error,
+  },
   sectionName: {
     color: AppColors.gray,
-    marginBottom: Spacing["3xl"],
+    marginBottom: Spacing.lg,
+  },
+  failedMessage: {
+    color: AppColors.gray,
+    textAlign: "center",
+    marginBottom: Spacing.xl,
+    paddingHorizontal: Spacing.lg,
   },
   statsContainer: {
     flexDirection: "row",
@@ -236,5 +302,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: AppColors.primary,
     borderRadius: BorderRadius.md,
+  },
+  rtlText: {
+    textAlign: "center",
+    writingDirection: "rtl",
   },
 });

@@ -83,7 +83,7 @@ export function SectionCard({
 
   return (
     <AnimatedPressable
-      onPress={state === "locked" ? undefined : onPress}
+      onPress={onPress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       style={[styles.cardWrapper, animatedStyle]}

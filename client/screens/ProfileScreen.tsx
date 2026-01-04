@@ -104,7 +104,7 @@ export default function ProfileScreen() {
           <Feather name="user" size={48} color={AppColors.white} />
         </View>
         <ThemedText type="h3" style={styles.email}>
-          {user?.email || "User"}
+          {t("profile.displayName")}
         </ThemedText>
         <ThemedText type="small" style={[styles.joinDate, isRTL && styles.rtlText]}>
           {t("profile.memberSince", { date: user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : "today" })}

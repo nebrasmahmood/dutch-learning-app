@@ -4,6 +4,7 @@ const STORAGE_KEYS = {
   USER_DATA: "@nederlearn_user",
   PROGRESS: "@nederlearn_progress",
   AUTH: "@nederlearn_auth",
+  QUIZ_STATE: "@nederlearn_quiz_state",
 };
 
 export interface UserData {
@@ -22,11 +23,20 @@ export interface SectionProgress {
   attempts: number;
 }
 
+export interface QuizState {
+  sectionId: string;
+  currentIndex: number;
+  correctCount: number;
+  answeredQuestions: string[];
+  questionIds: string[];
+}
+
 export interface ProgressData {
   completedSections: string[];
   sectionProgress: Record<string, SectionProgress>;
   examCompleted: boolean;
   examScore: number;
+  unlockedSections: string[];
 }
 
 export const storage = {
@@ -59,6 +69,7 @@ export const storage = {
       sectionProgress: {},
       examCompleted: false,
       examScore: 0,
+      unlockedSections: [],
     };
   },
 
@@ -141,7 +152,61 @@ export const storage = {
       sectionProgress: {},
       examCompleted: false,
       examScore: 0,
+      unlockedSections: [],
     });
     return user;
+  },
+
+  async getQuizState(sectionId: string): Promise<QuizState | null> {
+    try {
+      const data = await AsyncStorage.getItem(`${STORAGE_KEYS.QUIZ_STATE}_${sectionId}`);
+      return data ? JSON.parse(data) : null;
+    } catch {
+      return null;
+    }
+  },
+
+  async saveQuizState(state: QuizState): Promise<void> {
+    try {
+      await AsyncStorage.setItem(
+        `${STORAGE_KEYS.QUIZ_STATE}_${state.sectionId}`,
+        JSON.stringify(state)
+      );
+    } catch (error) {
+      console.error("Failed to save quiz state:", error);
+    }
+  },
+
+  async clearQuizState(sectionId: string): Promise<void> {
+    try {
+      await AsyncStorage.removeItem(`${STORAGE_KEYS.QUIZ_STATE}_${sectionId}`);
+    } catch (error) {
+      console.error("Failed to clear quiz state:", error);
+    }
+  },
+
+  async unlockSection(sectionId: string): Promise<boolean> {
+    const UNLOCK_COST = 300;
+    const user = await this.getUser();
+    if (!user || user.totalXP < UNLOCK_COST) return false;
+
+    user.totalXP -= UNLOCK_COST;
+    user.level = Math.floor(user.totalXP / 100) + 1;
+    await this.setUser(user);
+
+    const progress = await this.getProgress();
+    if (!progress.unlockedSections) {
+      progress.unlockedSections = [];
+    }
+    if (!progress.unlockedSections.includes(sectionId)) {
+      progress.unlockedSections.push(sectionId);
+    }
+    await this.setProgress(progress);
+    return true;
+  },
+
+  async isSectionUnlocked(sectionId: string): Promise<boolean> {
+    const progress = await this.getProgress();
+    return progress.unlockedSections?.includes(sectionId) || false;
   },
 };

@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { View, StyleSheet, ScrollView, Pressable, Image } from "react-native";
+import { View, StyleSheet, ScrollView, Pressable, Image, Alert, Platform } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -60,6 +60,8 @@ export default function HomeScreen() {
     setProgress(progressData);
   };
 
+  const UNLOCK_COST = 300;
+
   const getSectionState = (sectionId: string, index: number): SectionState => {
     if (!progress) return index === 0 ? "active" : "locked";
     
@@ -74,12 +76,69 @@ export default function HomeScreen() {
       return "active";
     }
     
+    if (progress.unlockedSections?.includes(sectionId)) {
+      return "active";
+    }
+    
     return "locked";
   };
 
-  const handleSectionPress = (sectionId: string) => {
+  const handleSectionPress = (sectionId: string, index: number) => {
+    const state = getSectionState(sectionId, index);
+    
+    if (state === "locked") {
+      handleUnlockSection(sectionId);
+      return;
+    }
+    
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     navigation.navigate("Quiz", { sectionId });
+  };
+
+  const handleUnlockSection = async (sectionId: string) => {
+    const userXP = user?.totalXP || 0;
+    
+    if (userXP < UNLOCK_COST) {
+      if (Platform.OS === "web") {
+        window.alert(`${t("section.notEnoughXP")}\n${t("section.needXP", { xp: UNLOCK_COST })}`);
+      } else {
+        Alert.alert(
+          t("section.notEnoughXP"),
+          t("section.needXP", { xp: UNLOCK_COST }),
+          [{ text: "OK" }]
+        );
+      }
+      return;
+    }
+    
+    if (Platform.OS === "web") {
+      const confirmed = window.confirm(`${t("section.unlockSection")}\n${t("section.unlockCost", { xp: UNLOCK_COST })}`);
+      if (confirmed) {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+        const success = await storage.unlockSection(sectionId);
+        if (success) {
+          await loadData();
+        }
+      }
+    } else {
+      Alert.alert(
+        t("section.unlockSection"),
+        t("section.unlockCost", { xp: UNLOCK_COST }),
+        [
+          { text: t("profile.cancel"), style: "cancel" },
+          {
+            text: t("section.unlock", { xp: UNLOCK_COST }),
+            onPress: async () => {
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              const success = await storage.unlockSection(sectionId);
+              if (success) {
+                await loadData();
+              }
+            },
+          },
+        ]
+      );
+    }
   };
 
   const handleProfilePress = () => {
@@ -249,7 +308,7 @@ export default function HomeScreen() {
                   name={getSectionName()}
                   icon={section.icon}
                   state={sectionState}
-                  onPress={() => handleSectionPress(section.id)}
+                  onPress={() => handleSectionPress(section.id, index)}
                   statusText={getLocalizedStatus()}
                   isRTL={isRTL}
                 />

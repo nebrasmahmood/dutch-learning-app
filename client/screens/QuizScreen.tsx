@@ -19,6 +19,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 type RouteType = RouteProp<RootStackParamList, "Quiz">;
 
 const XP_PER_CORRECT = 10;
+const MINIMUM_CORRECT_TO_PASS = 15;
 
 export default function QuizScreen() {
   const insets = useSafeAreaInsets();
@@ -40,14 +41,45 @@ export default function QuizScreen() {
   };
 
   useEffect(() => {
-    const section = getSectionById(sectionId);
-    if (section) {
-      const quizQuestions = generateQuizQuestions(section);
-      setQuestions(quizQuestions);
-      navigation.setOptions({ headerTitle: section.name });
-    }
-    setLoading(false);
+    const loadQuiz = async () => {
+      const section = getSectionById(sectionId);
+      if (section) {
+        const savedState = await storage.getQuizState(sectionId);
+        const quizQuestions = generateQuizQuestions(section);
+        
+        if (savedState && savedState.questionIds.length === quizQuestions.length) {
+          const orderedQuestions = savedState.questionIds
+            .map(id => quizQuestions.find(q => q.id === id))
+            .filter((q): q is QuizQuestion => q !== undefined);
+          
+          if (orderedQuestions.length === quizQuestions.length) {
+            setQuestions(orderedQuestions);
+            setCurrentIndex(savedState.currentIndex);
+            setCorrectCount(savedState.correctCount);
+          } else {
+            setQuestions(quizQuestions);
+          }
+        } else {
+          setQuestions(quizQuestions);
+        }
+        navigation.setOptions({ headerTitle: section.name });
+      }
+      setLoading(false);
+    };
+    loadQuiz();
   }, [sectionId]);
+
+  useEffect(() => {
+    if (questions.length > 0 && !loading) {
+      storage.saveQuizState({
+        sectionId,
+        currentIndex,
+        correctCount,
+        answeredQuestions: [],
+        questionIds: questions.map(q => q.id),
+      });
+    }
+  }, [currentIndex, correctCount, questions, sectionId, loading]);
 
   const currentQuestion = questions[currentIndex];
   const progress = questions.length > 0 ? (currentIndex + 1) / questions.length : 0;
@@ -69,17 +101,25 @@ export default function QuizScreen() {
       }, 1000);
     }
 
-    setTimeout(() => {
+    setTimeout(async () => {
       if (currentIndex < questions.length - 1) {
         setCurrentIndex((prev) => prev + 1);
         setSelectedAnswer(null);
         setIsCorrect(null);
       } else {
-        const xpGained = (correctCount + (correct ? 1 : 0)) * XP_PER_CORRECT;
-        storage.completeSection(sectionId, (correctCount + (correct ? 1 : 0)) / questions.length);
+        const finalCorrectCount = correctCount + (correct ? 1 : 0);
+        const xpGained = finalCorrectCount * XP_PER_CORRECT;
+        const score = finalCorrectCount / questions.length;
+        
+        if (finalCorrectCount >= MINIMUM_CORRECT_TO_PASS) {
+          await storage.completeSection(sectionId, score);
+        }
+        
+        await storage.clearQuizState(sectionId);
+        
         navigation.replace("SectionComplete", {
           sectionId,
-          correctAnswers: correctCount + (correct ? 1 : 0),
+          correctAnswers: finalCorrectCount,
           totalQuestions: questions.length,
           xpGained,
         });
