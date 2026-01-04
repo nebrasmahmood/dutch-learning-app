@@ -9,8 +9,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.nederlearn.app"
+      "supportsTablet": false,
+      "bundleIdentifier": "com.nederlearn.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -44,6 +47,11 @@
     ],
     "experiments": {
       "reactCompiler": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f1ee82d7-fc1b-4618-95d7-c27f8ca58878"
+      }
     }
   }
 }

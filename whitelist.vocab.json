@@ -291,7 +291,7 @@
           "word_nl": "schorseneer",
           "word_en": "salsify",
           "image_prompt": "salsify root on white background",
-          "word_ar": "لحية التيس"
+          "word_ar": "السالسيفي"
         },
         {
           "id": "veg_42",
@@ -958,14 +958,14 @@
           "word_nl": "antraciet",
           "word_en": "anthracite",
           "image_prompt": "solid anthracite color background",
-          "word_ar": "أنثراسايت"
+          "word_ar": "(فحمي)أنثراسايت"
         },
         {
           "id": "co_35",
           "word_nl": "asgrijs",
           "word_en": "ash gray",
           "image_prompt": "solid ash gray color background",
-          "word_ar": "رمادي رماد"
+          "word_ar": "رمادي "
         },
         {
           "id": "co_36",
@@ -1351,7 +1351,7 @@
           "word_nl": "mosterd",
           "word_en": "mustard",
           "image_prompt": "bowl of mustard on white background",
-          "word_ar": "خردلي"
+          "word_ar": "خردل"
         },
         {
           "id": "fd_40",
@@ -2018,7 +2018,7 @@
           "word_nl": "halte",
           "word_en": "stop",
           "image_prompt": "bus stop sign on white background",
-          "word_ar": "محطة"
+          "word_ar": "مكان وقوف الحافلة"
         },
         {
           "id": "pl_33",
@@ -2552,7 +2552,7 @@
           "word_nl": "manager",
           "word_en": "manager",
           "image_prompt": "manager in business clothing on white background",
-          "word_ar": "مدير"
+          "word_ar": "مسؤول"
         },
         {
           "id": "jo_07",
