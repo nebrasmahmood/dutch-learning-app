@@ -9,7 +9,7 @@ const STORAGE_KEYS = {
 
 export interface UserData {
   id: string;
-  email: string;
+  name: string;
   level: number;
   totalXP: number;
   badges: string[];
@@ -136,10 +136,10 @@ export const storage = {
     }
   },
 
-  async initUser(email: string): Promise<UserData> {
+  async initUser(name: string): Promise<UserData> {
     const user: UserData = {
       id: Date.now().toString(),
-      email,
+      name,
       level: 1,
       totalXP: 0,
       badges: [],

@@ -1,58 +1,28 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TextInput, Alert, Image, Platform, Pressable } from "react-native";
+import { View, StyleSheet, TextInput, Alert, Image } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation, CommonActions } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Feather } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
-import * as AppleAuthentication from "expo-apple-authentication";
 
 import { Button } from "@/components/Button";
 import { ThemedText } from "@/components/ThemedText";
 import { KeyboardAwareScrollViewCompat } from "@/components/KeyboardAwareScrollViewCompat";
 import { AppColors, Spacing, BorderRadius } from "@/constants/theme";
 import { storage } from "@/lib/storage";
+import { useLanguage } from "@/lib/LanguageContext";
 import type { RootStackParamList } from "@/navigation/RootStackNavigator";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-type AuthProvider = "email" | "google" | "apple";
-
-interface AuthService {
-  signInWithEmail: (email: string, password: string) => Promise<{ email: string }>;
-  signInWithGoogle: () => Promise<{ email: string }>;
-  signInWithApple: (credential: AppleAuthentication.AppleAuthenticationCredential) => Promise<{ email: string }>;
-}
-
-const mockAuthService: AuthService = {
-  signInWithEmail: async (email: string, _password: string) => {
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return { email };
-  },
-  signInWithGoogle: async () => {
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return { email: "google.user@gmail.com" };
-  },
-  signInWithApple: async (credential) => {
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return { email: credential.email || "apple.user@icloud.com" };
-  },
-};
-
 export default function AuthScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { t, isRTL } = useLanguage();
+  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
-  const [loadingProvider, setLoadingProvider] = useState<AuthProvider | null>(null);
-  const [showPassword, setShowPassword] = useState(false);
-
-  const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
 
   const navigateToHome = () => {
     navigation.dispatch(
@@ -63,76 +33,34 @@ export default function AuthScreen() {
     );
   };
 
-  const handleEmailSignIn = async () => {
-    if (!email.trim()) {
-      Alert.alert("Error", "Please enter your email address");
+  const handleStartLearning = async () => {
+    const trimmedName = name.trim();
+    if (!trimmedName) {
+      Alert.alert(
+        t("auth.error"),
+        t("auth.nameRequired")
+      );
       return;
     }
-    if (!validateEmail(email)) {
-      Alert.alert("Error", "Please enter a valid email address");
-      return;
-    }
-    if (password.length < 6) {
-      Alert.alert("Error", "Password must be at least 6 characters");
+
+    if (trimmedName.length < 2) {
+      Alert.alert(
+        t("auth.error"),
+        t("auth.nameTooShort")
+      );
       return;
     }
 
     setLoading(true);
-    setLoadingProvider("email");
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
     try {
-      const result = await mockAuthService.signInWithEmail(email, password);
-      await storage.initUser(result.email);
+      await storage.initUser(trimmedName);
       navigateToHome();
     } catch (error) {
-      Alert.alert("Error", "Something went wrong. Please try again.");
+      Alert.alert(t("auth.error"), t("auth.errorMessage"));
     } finally {
       setLoading(false);
-      setLoadingProvider(null);
-    }
-  };
-
-  const handleGoogleSignIn = async () => {
-    setLoading(true);
-    setLoadingProvider("google");
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    try {
-      const result = await mockAuthService.signInWithGoogle();
-      await storage.initUser(result.email);
-      navigateToHome();
-    } catch (error) {
-      Alert.alert("Error", "Google Sign-In failed. Please try again.");
-    } finally {
-      setLoading(false);
-      setLoadingProvider(null);
-    }
-  };
-
-  const handleAppleSignIn = async () => {
-    setLoading(true);
-    setLoadingProvider("apple");
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-
-    try {
-      const credential = await AppleAuthentication.signInAsync({
-        requestedScopes: [
-          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
-          AppleAuthentication.AppleAuthenticationScope.EMAIL,
-        ],
-      });
-      
-      const result = await mockAuthService.signInWithApple(credential);
-      await storage.initUser(result.email);
-      navigateToHome();
-    } catch (error: any) {
-      if (error.code !== "ERR_REQUEST_CANCELED") {
-        Alert.alert("Error", "Apple Sign-In failed. Please try again.");
-      }
-    } finally {
-      setLoading(false);
-      setLoadingProvider(null);
     }
   };
 
@@ -160,128 +88,44 @@ export default function AuthScreen() {
             />
           </View>
           <ThemedText type="h2" style={styles.title}>
-            Welcome to NederLearn
+            {t("auth.welcome")}
           </ThemedText>
           <ThemedText type="body" style={styles.subtitle}>
-            Master Dutch vocabulary with fun quizzes
+            {t("auth.subtitle")}
           </ThemedText>
         </View>
 
         <View style={styles.form}>
-          <View style={styles.socialButtons}>
-            <Pressable
-              onPress={handleGoogleSignIn}
-              disabled={loading}
-              style={({ pressed }) => [
-                styles.socialButton,
-                styles.googleButton,
-                pressed && styles.socialButtonPressed,
-                loading && styles.socialButtonDisabled,
-              ]}
-            >
-              <View style={styles.socialButtonContent}>
-                <View style={styles.googleIconContainer}>
-                  <ThemedText style={styles.googleG}>G</ThemedText>
-                </View>
-                <ThemedText type="body" style={styles.socialButtonText}>
-                  {loadingProvider === "google" ? "Signing in..." : "Continue with Google"}
-                </ThemedText>
-              </View>
-            </Pressable>
-
-            {Platform.OS === "ios" ? (
-              <AppleAuthentication.AppleAuthenticationButton
-                buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
-                buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
-                cornerRadius={BorderRadius.md}
-                style={styles.appleButton}
-                onPress={handleAppleSignIn}
-              />
-            ) : (
-              <Pressable
-                onPress={handleAppleSignIn}
-                disabled={loading}
-                style={({ pressed }) => [
-                  styles.socialButton,
-                  styles.appleButtonWeb,
-                  pressed && styles.socialButtonPressed,
-                  loading && styles.socialButtonDisabled,
-                ]}
-              >
-                <View style={styles.socialButtonContent}>
-                  <Feather name="smartphone" size={20} color={AppColors.white} />
-                  <ThemedText type="body" style={styles.appleButtonText}>
-                    {loadingProvider === "apple" ? "Signing in..." : "Continue with Apple"}
-                  </ThemedText>
-                </View>
-              </Pressable>
-            )}
-          </View>
-
-          <View style={styles.divider}>
-            <View style={styles.dividerLine} />
-            <ThemedText type="small" style={styles.dividerText}>or</ThemedText>
-            <View style={styles.dividerLine} />
-          </View>
-
           <View style={styles.inputContainer}>
-            <ThemedText type="small" style={styles.label}>
-              Email
+            <ThemedText type="small" style={[styles.label, isRTL && styles.rtlText]}>
+              {t("auth.nameLabel")}
             </ThemedText>
             <View style={styles.inputWrapper}>
-              <Feather name="mail" size={18} color={AppColors.gray} style={styles.inputIcon} />
+              <Feather name="user" size={18} color={AppColors.gray} style={styles.inputIcon} />
               <TextInput
-                style={styles.input}
-                placeholder="Enter your email"
+                style={[styles.input, isRTL && styles.rtlInput]}
+                placeholder={t("auth.namePlaceholder")}
                 placeholderTextColor={AppColors.gray}
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
+                value={name}
+                onChangeText={setName}
+                autoCapitalize="words"
                 autoCorrect={false}
                 editable={!loading}
+                textAlign={isRTL ? "right" : "left"}
               />
-            </View>
-          </View>
-
-          <View style={styles.inputContainer}>
-            <ThemedText type="small" style={styles.label}>
-              Password
-            </ThemedText>
-            <View style={styles.inputWrapper}>
-              <Feather name="lock" size={18} color={AppColors.gray} style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="Enter your password"
-                placeholderTextColor={AppColors.gray}
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry={!showPassword}
-                editable={!loading}
-              />
-              <Pressable 
-                onPress={() => setShowPassword(!showPassword)} 
-                style={styles.eyeButton}
-              >
-                <Feather 
-                  name={showPassword ? "eye-off" : "eye"} 
-                  size={18} 
-                  color={AppColors.gray} 
-                />
-              </Pressable>
             </View>
           </View>
 
           <Button
-            onPress={handleEmailSignIn}
+            onPress={handleStartLearning}
             disabled={loading}
             style={styles.button}
           >
-            {loadingProvider === "email" ? "Signing in..." : "Continue with Email"}
+            {loading ? t("auth.loading") : t("auth.startLearning")}
           </Button>
 
-          <ThemedText type="small" style={styles.termsText}>
-            By continuing, you agree to our Terms of Service and Privacy Policy
+          <ThemedText type="small" style={styles.infoText}>
+            {t("auth.localStorageInfo")}
           </ThemedText>
         </View>
       </KeyboardAwareScrollViewCompat>
@@ -299,6 +143,7 @@ const styles = StyleSheet.create({
   content: {
     flexGrow: 1,
     paddingHorizontal: Spacing.xl,
+    justifyContent: "center",
   },
   header: {
     alignItems: "center",
@@ -344,86 +189,16 @@ const styles = StyleSheet.create({
     shadowRadius: 24,
     elevation: 12,
   },
-  socialButtons: {
-    gap: Spacing.md,
-    marginBottom: Spacing.lg,
-  },
-  socialButton: {
-    height: 52,
-    borderRadius: BorderRadius.md,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 1,
-  },
-  socialButtonPressed: {
-    opacity: 0.9,
-    transform: [{ scale: 0.98 }],
-  },
-  socialButtonDisabled: {
-    opacity: 0.6,
-  },
-  socialButtonContent: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: Spacing.md,
-  },
-  googleButton: {
-    backgroundColor: AppColors.white,
-    borderColor: AppColors.grayLight,
-  },
-  googleIconContainer: {
-    width: 24,
-    height: 24,
-    borderRadius: 4,
-    backgroundColor: AppColors.white,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  googleG: {
-    fontSize: 18,
-    fontWeight: "700",
-    color: "#4285F4",
-  },
-  socialButtonText: {
-    color: AppColors.textDark,
-    fontWeight: "600",
-    fontSize: 15,
-  },
-  appleButton: {
-    height: 52,
-    width: "100%",
-  },
-  appleButtonWeb: {
-    backgroundColor: "#000",
-    borderColor: "#000",
-  },
-  appleButtonText: {
-    color: AppColors.white,
-    fontWeight: "600",
-    fontSize: 15,
-  },
-  divider: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: Spacing.lg,
-  },
-  dividerLine: {
-    flex: 1,
-    height: 1,
-    backgroundColor: AppColors.grayLight,
-  },
-  dividerText: {
-    color: AppColors.gray,
-    marginHorizontal: Spacing.lg,
-    fontSize: 13,
-  },
   inputContainer: {
-    marginBottom: Spacing.lg,
+    marginBottom: Spacing.xl,
   },
   label: {
     color: AppColors.textDark,
     marginBottom: Spacing.sm,
     fontWeight: "600",
+  },
+  rtlText: {
+    textAlign: "right",
   },
   inputWrapper: {
     flexDirection: "row",
@@ -443,17 +218,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: AppColors.textDark,
   },
-  eyeButton: {
-    padding: Spacing.sm,
-    marginRight: -Spacing.sm,
+  rtlInput: {
+    textAlign: "right",
   },
   button: {
-    marginTop: Spacing.sm,
     backgroundColor: AppColors.primary,
     borderRadius: BorderRadius.md,
     height: 52,
   },
-  termsText: {
+  infoText: {
     color: AppColors.gray,
     textAlign: "center",
     marginTop: Spacing.lg,

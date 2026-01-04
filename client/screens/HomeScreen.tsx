@@ -168,9 +168,13 @@ export default function HomeScreen() {
     transform: [{ scale: avatarScale.value }],
   }));
 
-  const getInitials = (email?: string) => {
-    if (!email) return "NL";
-    return email.charAt(0).toUpperCase();
+  const getInitials = (name?: string) => {
+    if (!name) return "NL";
+    const parts = name.trim().split(" ");
+    if (parts.length >= 2) {
+      return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+    }
+    return name.charAt(0).toUpperCase();
   };
 
   return (
@@ -209,7 +213,7 @@ export default function HomeScreen() {
                   style={styles.avatar}
                 >
                   <ThemedText type="h4" style={styles.avatarText}>
-                    {getInitials(user?.email)}
+                    {getInitials(user?.name)}
                   </ThemedText>
                 </LinearGradient>
                 <View style={styles.levelBadge}>
